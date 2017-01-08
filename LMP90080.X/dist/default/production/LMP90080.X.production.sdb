@@ -1,0 +1,445 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F2550 ]
+[d frameptr 4065 ]
+"62 /opt/microchip/xc8/v1.40/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.40/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 /opt/microchip/xc8/v1.40/sources/common/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 /opt/microchip/xc8/v1.40/sources/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 /opt/microchip/xc8/v1.40/sources/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 /opt/microchip/xc8/v1.40/sources/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 /opt/microchip/xc8/v1.40/sources/common/sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 /opt/microchip/xc8/v1.40/sources/common/sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 /opt/microchip/xc8/v1.40/sources/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"35 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.c
+[v _inst2ToByte inst2ToByte `(uc  1 e 1 0 ]
+"42 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.h
+[s S415 . 3 `uc 1 R_WB 1 0 `uc 1 SZ 1 1 `uc 1 LRA 1 2 ]
+"43 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.c
+[v _contructInstruction2Byte contructInstruction2Byte `(S415  1 e 3 0 ]
+"37 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.h
+[s S419 . 2 `uc 1 INST1 1 0 `uc 1 UAB 1 1 ]
+"51 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.c
+[v _constructTransaction1 constructTransaction1 `(S419  1 e 2 0 ]
+"48 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.h
+"42
+[s S415 . 3 `uc 1 R_WB 1 0 `uc 1 SZ 1 1 `uc 1 LRA 1 2 ]
+"58 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.c
+[s S422 . 4 `S415 1 INST2 3 0 `uc 1 DataByte 1 3 ]
+[v _constructTransaction2 constructTransaction2 `(S422  1 e 4 0 ]
+"65
+[v _writeTransaction writeTransaction `(uc  1 e 1 0 ]
+"82
+[v _D_ADC_Init D_ADC_Init `(v  1 e 1 0 ]
+"99
+[v _D_ADC_ReadRegister D_ADC_ReadRegister `(uc  1 e 1 0 ]
+"107
+[v _D_ADC_WriteRegister D_ADC_WriteRegister `(v  1 e 1 0 ]
+"31 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/PORT_Driver.c
+[v _D_PORT_Init D_PORT_Init `(v  1 e 1 0 ]
+"32 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/SPI_Driver.c
+[v _D_SPI_Init D_SPI_Init `(v  1 e 1 0 ]
+"83
+[v _D_SPI_Write D_SPI_Write `(uc  1 e 1 0 ]
+"96
+[v _D_SPI_Enable D_SPI_Enable `(v  1 e 1 0 ]
+"24 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/main.c
+[v _delay10ms delay10ms `(v  1 e 1 0 ]
+"32
+[v _delay100ms delay100ms `(v  1 e 1 0 ]
+"40
+[v _delay1000ms delay1000ms `(v  1 e 1 0 ]
+"48
+[v _initialize initialize `(v  1 e 1 0 ]
+"53
+[v _main main `(v  1 e 1 0 ]
+"2087 /opt/microchip/xc8/v1.40/include/pic18f2550.h
+[v _PORTA PORTA `VEuc  1 e 1 @3968 ]
+"2225
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+[s S30 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"2255
+[s S437 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 PGM 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S445 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S448 . 1 `S30 1 . 1 0 `S437 1 . 1 0 `S445 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES448  1 e 1 @3969 ]
+"2334
+[v _PORTC PORTC `VEuc  1 e 1 @3970 ]
+[s S366 . 1 `uc 1 LATB0 1 0 :1:0 
+`uc 1 LATB1 1 0 :1:1 
+`uc 1 LATB2 1 0 :1:2 
+`uc 1 LATB3 1 0 :1:3 
+`uc 1 LATB4 1 0 :1:4 
+`uc 1 LATB5 1 0 :1:5 
+`uc 1 LATB6 1 0 :1:6 
+`uc 1 LATB7 1 0 :1:7 
+]
+"2639
+[s S375 . 1 `uc 1 LB0 1 0 :1:0 
+`uc 1 LB1 1 0 :1:1 
+`uc 1 LB2 1 0 :1:2 
+`uc 1 LB3 1 0 :1:3 
+`uc 1 LB4 1 0 :1:4 
+`uc 1 LB5 1 0 :1:5 
+`uc 1 LB6 1 0 :1:6 
+`uc 1 LB7 1 0 :1:7 
+]
+[u S384 . 1 `S366 1 . 1 0 `S375 1 . 1 0 ]
+[v _LATBbits LATBbits `VES384  1 e 1 @3978 ]
+"2800
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"2997
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S21 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"3029
+[u S39 . 1 `S21 1 . 1 0 `S30 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES39  1 e 1 @3987 ]
+"3218
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+[s S61 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"3246
+[s S68 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S75 . 1 `S61 1 . 1 0 `S68 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES75  1 e 1 @3988 ]
+[s S266 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+]
+"3520
+[s S274 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+]
+[u S278 . 1 `S266 1 . 1 0 `S274 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES278  1 e 1 @3998 ]
+"5325
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+[s S240 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"5626
+[s S246 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S251 . 1 `S240 1 . 1 0 `S246 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES251  1 e 1 @4038 ]
+[s S99 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W 1 0 :1:2 
+]
+"5758
+[s S102 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A 1 0 :1:5 
+]
+[s S105 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S114 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S119 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DAT 1 0 :1:5 
+]
+[s S125 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S130 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE 1 0 :1:2 
+]
+[s S133 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS 1 0 :1:5 
+]
+[s S136 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S141 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[s S146 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S151 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW 1 0 :1:2 
+`uc 1 START 1 0 :1:3 
+`uc 1 STOP 1 0 :1:4 
+`uc 1 DA 1 0 :1:5 
+]
+[s S157 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 NOT_A 1 0 :1:5 
+]
+[u S162 . 1 `S99 1 . 1 0 `S102 1 . 1 0 `S105 1 . 1 0 `S114 1 . 1 0 `S119 1 . 1 0 `S125 1 . 1 0 `S130 1 . 1 0 `S133 1 . 1 0 `S136 1 . 1 0 `S141 1 . 1 0 `S146 1 . 1 0 `S151 1 . 1 0 `S157 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES162  1 e 1 @4039 ]
+"5928
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+"53 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"59
+[v main@a a `uc  1 a 1 25 ]
+"72
+} 0
+"48
+[v _initialize initialize `(v  1 e 1 0 ]
+{
+"51
+} 0
+"31 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/PORT_Driver.c
+[v _D_PORT_Init D_PORT_Init `(v  1 e 1 0 ]
+{
+"41
+} 0
+"82 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.c
+[v _D_ADC_Init D_ADC_Init `(v  1 e 1 0 ]
+{
+"93
+} 0
+"32 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/SPI_Driver.c
+[v _D_SPI_Init D_SPI_Init `(v  1 e 1 0 ]
+{
+[v D_SPI_Init@MS MS `uc  1 a 1 wreg ]
+[v D_SPI_Init@MS MS `uc  1 a 1 wreg ]
+[v D_SPI_Init@mode mode `uc  1 p 1 1 ]
+"34
+[v D_SPI_Init@MS MS `uc  1 a 1 2 ]
+"81
+} 0
+"96
+[v _D_SPI_Enable D_SPI_Enable `(v  1 e 1 0 ]
+{
+[v D_SPI_Enable@enable enable `uc  1 a 1 wreg ]
+[v D_SPI_Enable@enable enable `uc  1 a 1 wreg ]
+[v D_SPI_Enable@enable enable `uc  1 a 1 0 ]
+"105
+} 0
+"40 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/main.c
+[v _delay1000ms delay1000ms `(v  1 e 1 0 ]
+{
+[v delay1000ms@d d `uc  1 a 1 wreg ]
+"41
+[v delay1000ms@i i `uc  1 a 1 6 ]
+"40
+[v delay1000ms@d d `uc  1 a 1 wreg ]
+[v delay1000ms@d d `uc  1 a 1 5 ]
+"46
+} 0
+"32
+[v _delay100ms delay100ms `(v  1 e 1 0 ]
+{
+[v delay100ms@d d `uc  1 a 1 wreg ]
+"33
+[v delay100ms@i i `uc  1 a 1 4 ]
+"32
+[v delay100ms@d d `uc  1 a 1 wreg ]
+[v delay100ms@d d `uc  1 a 1 3 ]
+"38
+} 0
+"24
+[v _delay10ms delay10ms `(v  1 e 1 0 ]
+{
+[v delay10ms@d d `uc  1 a 1 wreg ]
+"25
+[v delay10ms@i i `uc  1 a 1 2 ]
+"24
+[v delay10ms@d d `uc  1 a 1 wreg ]
+[v delay10ms@d d `uc  1 a 1 1 ]
+"30
+} 0
+"107 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.c
+[v _D_ADC_WriteRegister D_ADC_WriteRegister `(v  1 e 1 0 ]
+{
+[v D_ADC_WriteRegister@addr addr `uc  1 a 1 wreg ]
+[s S419 . 2 `uc 1 INST1 1 0 `uc 1 UAB 1 1 ]
+"108
+[s S415 . 3 `uc 1 R_WB 1 0 `uc 1 SZ 1 1 `uc 1 LRA 1 2 ]
+[s S422 . 4 `S415 1 INST2 3 0 `uc 1 DataByte 1 3 ]
+[s S425 . 6 `S419 1 transaction1 2 0 `S422 1 transaction2 4 2 ]
+[v D_ADC_WriteRegister@transaction transaction `S425  1 a 6 19 ]
+"107
+[v D_ADC_WriteRegister@addr addr `uc  1 a 1 wreg ]
+[v D_ADC_WriteRegister@data data `uc  1 p 1 17 ]
+"109
+[v D_ADC_WriteRegister@addr addr `uc  1 a 1 18 ]
+"112
+} 0
+"99
+[v _D_ADC_ReadRegister D_ADC_ReadRegister `(uc  1 e 1 0 ]
+{
+[v D_ADC_ReadRegister@addr addr `uc  1 a 1 wreg ]
+[s S419 . 2 `uc 1 INST1 1 0 `uc 1 UAB 1 1 ]
+"101
+[s S415 . 3 `uc 1 R_WB 1 0 `uc 1 SZ 1 1 `uc 1 LRA 1 2 ]
+[s S422 . 4 `S415 1 INST2 3 0 `uc 1 DataByte 1 3 ]
+[s S425 . 6 `S419 1 transaction1 2 0 `S422 1 transaction2 4 2 ]
+[v D_ADC_ReadRegister@transaction transaction `S425  1 a 6 19 ]
+"100
+[v D_ADC_ReadRegister@data data `uc  1 a 1 17 ]
+"99
+[v D_ADC_ReadRegister@addr addr `uc  1 a 1 wreg ]
+[v D_ADC_ReadRegister@addr addr `uc  1 a 1 18 ]
+"105
+} 0
+"65
+[v _writeTransaction writeTransaction `(uc  1 e 1 0 ]
+{
+"66
+[v writeTransaction@input input `uc  1 a 1 16 ]
+[s S419 . 2 `uc 1 INST1 1 0 `uc 1 UAB 1 1 ]
+"65
+[s S415 . 3 `uc 1 R_WB 1 0 `uc 1 SZ 1 1 `uc 1 LRA 1 2 ]
+[s S422 . 4 `S415 1 INST2 3 0 `uc 1 DataByte 1 3 ]
+[s S425 . 6 `S419 1 transaction1 2 0 `S422 1 transaction2 4 2 ]
+[v writeTransaction@t t `S425  1 p 6 10 ]
+"77
+} 0
+"35
+[v _inst2ToByte inst2ToByte `(uc  1 e 1 0 ]
+{
+"38
+[v inst2ToByte@c c `uc  1 a 1 9 ]
+"37
+[v inst2ToByte@b b `uc  1 a 1 8 ]
+"36
+[v inst2ToByte@a a `uc  1 a 1 7 ]
+"39
+[v inst2ToByte@d d `uc  1 a 1 6 ]
+[s S415 . 3 `uc 1 R_WB 1 0 `uc 1 SZ 1 1 `uc 1 LRA 1 2 ]
+"35
+[v inst2ToByte@inst2 inst2 `S415  1 p 3 0 ]
+"41
+} 0
+"83 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/SPI_Driver.c
+[v _D_SPI_Write D_SPI_Write `(uc  1 e 1 0 ]
+{
+[v D_SPI_Write@data data `uc  1 a 1 wreg ]
+[v D_SPI_Write@data data `uc  1 a 1 wreg ]
+[v D_SPI_Write@data data `uc  1 a 1 0 ]
+"88
+} 0
+"48 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.h
+"42
+[s S415 . 3 `uc 1 R_WB 1 0 `uc 1 SZ 1 1 `uc 1 LRA 1 2 ]
+"58 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.c
+[s S422 . 4 `S415 1 INST2 3 0 `uc 1 DataByte 1 3 ]
+[v _constructTransaction2 constructTransaction2 `(S422  1 e 4 0 ]
+{
+[v constructTransaction2@db db `uc  1 a 1 wreg ]
+"59
+[v constructTransaction2@transaction2 transaction2 `S422  1 a 4 12 ]
+"58
+[v constructTransaction2@db db `uc  1 a 1 wreg ]
+[v constructTransaction2@rwb rwb `uc  1 p 1 7 ]
+[v constructTransaction2@sz sz `uc  1 p 1 8 ]
+[v constructTransaction2@lra lra `uc  1 p 1 9 ]
+"60
+[v constructTransaction2@db db `uc  1 a 1 11 ]
+"63
+} 0
+"42 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.h
+[s S415 . 3 `uc 1 R_WB 1 0 `uc 1 SZ 1 1 `uc 1 LRA 1 2 ]
+"43 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.c
+[v _contructInstruction2Byte contructInstruction2Byte `(S415  1 e 3 0 ]
+{
+[v contructInstruction2Byte@rwb rwb `uc  1 a 1 wreg ]
+"44
+[v contructInstruction2Byte@inst2 inst2 `S415  1 a 3 4 ]
+"43
+[v contructInstruction2Byte@rwb rwb `uc  1 a 1 wreg ]
+[v contructInstruction2Byte@sz sz `uc  1 p 1 0 ]
+[v contructInstruction2Byte@lra lra `uc  1 p 1 1 ]
+"45
+[v contructInstruction2Byte@rwb rwb `uc  1 a 1 3 ]
+"49
+} 0
+"37 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.h
+[s S419 . 2 `uc 1 INST1 1 0 `uc 1 UAB 1 1 ]
+"51 /home/wouter/Documents/geeken/software/mplab/OVEN/LMP90080.X/Drivers/ADC_Driver.c
+[v _constructTransaction1 constructTransaction1 `(S419  1 e 2 0 ]
+{
+[v constructTransaction1@rw rw `uc  1 a 1 wreg ]
+"52
+[v constructTransaction1@transaction1 transaction1 `S419  1 a 2 3 ]
+"51
+[v constructTransaction1@rw rw `uc  1 a 1 wreg ]
+[v constructTransaction1@uab uab `uc  1 p 1 0 ]
+"53
+[v constructTransaction1@rw rw `uc  1 a 1 2 ]
+"56
+} 0

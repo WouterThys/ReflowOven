@@ -1,0 +1,1909 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.40 build -251452761 
+                                                                                               Fri Dec 30 23:13:03 2016
+
+Microchip Technology Omniscient Code Generator v1.40 (Free mode) build 201612010151
+     1                           	processor	18F2550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     7                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     8                           	psect	text1,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text13,global,reloc=2,class=CODE,delta=1
+    21                           	psect	text14,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text15,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text16,global,reloc=2,class=CODE,delta=1
+    24                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    25                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    26  0000                     
+    27                           ; Version 1.40
+    28                           ; Generated 01/12/2016 GMT
+    29                           ; 
+    30                           ; Copyright © 2016, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    31                           ; All rights reserved.
+    32                           ; 
+    33                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    34                           ; 
+    35                           ; Redistribution and use in source and binary forms, with or without modification, are
+    36                           ; permitted provided that the following conditions are met:
+    37                           ; 
+    38                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    39                           ;        conditions and the following disclaimer.
+    40                           ; 
+    41                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    42                           ;        of conditions and the following disclaimer in the documentation and/or other
+    43                           ;        materials provided with the distribution.
+    44                           ; 
+    45                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    46                           ;        software without specific prior written permission.
+    47                           ; 
+    48                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    49                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    50                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    51                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    52                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    53                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    54                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    55                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    56                           ; 
+    57                           ; 
+    58                           ; Code-generator required, PIC18F2550 Definitions
+    59                           ; 
+    60                           ; SFR Addresses
+    61  0000                     _ADCON1	set	4033
+    62  0000                     _LATBbits	set	3978
+    63  0000                     _PIR1bits	set	3998
+    64  0000                     _PORTA	set	3968
+    65  0000                     _PORTB	set	3969
+    66  0000                     _PORTBbits	set	3969
+    67  0000                     _PORTC	set	3970
+    68  0000                     _SSPBUF	set	4041
+    69  0000                     _SSPCON1bits	set	4038
+    70  0000                     _SSPSTATbits	set	4039
+    71  0000                     _TRISA	set	3986
+    72  0000                     _TRISB	set	3987
+    73  0000                     _TRISBbits	set	3987
+    74  0000                     _TRISC	set	3988
+    75  0000                     _TRISCbits	set	3988
+    76                           
+    77                           ; #config settings
+    78  0000                     
+    79                           	psect	cinit
+    80  007D04                     __pcinit:
+    81                           	opt stack 0
+    82  007D04                     start_initialization:
+    83                           	opt stack 0
+    84  007D04                     __initialization:
+    85                           	opt stack 0
+    86  007D04                     end_of_initialization:
+    87                           	opt stack 0
+    88  007D04                     __end_of__initialization:
+    89                           	opt stack 0
+    90  007D04  0E00               	movlw	low (__Lmediumconst shr (0+16))
+    91  007D06  6EF8               	movwf	tblptru,c
+    92  007D08  0100               	movlb	0
+    93  007D0A  EF19  F03F         	goto	_main	;jump to C main() function
+    94                           tblptru	equ	0xFF8
+    95                           
+    96                           	psect	cstackCOMRAM
+    97  000001                     __pcstackCOMRAM:
+    98                           	opt stack 0
+    99  000001                     ??_delay10ms:
+   100  000001                     ?_constructTransaction1:
+   101                           	opt stack 0
+   102  000001                     ?_contructInstruction2Byte:
+   103                           	opt stack 0
+   104  000001                     D_SPI_Write@data:
+   105                           	opt stack 0
+   106  000001                     D_SPI_Enable@enable:
+   107                           	opt stack 0
+   108  000001                     contructInstruction2Byte@sz:
+   109                           	opt stack 0
+   110  000001                     constructTransaction1@uab:
+   111                           	opt stack 0
+   112  000001                     inst2ToByte@inst2:
+   113                           	opt stack 0
+   114                           
+   115                           ; 3 bytes @ 0x0
+   116  000001                     	ds	1
+   117  000002                     D_SPI_Init@mode:
+   118                           	opt stack 0
+   119  000002                     contructInstruction2Byte@lra:
+   120                           	opt stack 0
+   121  000002                     delay10ms@d:
+   122                           	opt stack 0
+   123                           
+   124                           ; 1 bytes @ 0x1
+   125  000002                     	ds	1
+   126  000003                     D_SPI_Init@MS:
+   127                           	opt stack 0
+   128  000003                     constructTransaction1@rw:
+   129                           	opt stack 0
+   130  000003                     delay10ms@i:
+   131                           	opt stack 0
+   132                           
+   133                           ; 1 bytes @ 0x2
+   134  000003                     	ds	1
+   135  000004                     ??_inst2ToByte:
+   136  000004                     contructInstruction2Byte@rwb:
+   137                           	opt stack 0
+   138  000004                     delay100ms@d:
+   139                           	opt stack 0
+   140  000004                     constructTransaction1@transaction1:
+   141                           	opt stack 0
+   142                           
+   143                           ; 2 bytes @ 0x3
+   144  000004                     	ds	1
+   145  000005                     delay100ms@i:
+   146                           	opt stack 0
+   147  000005                     contructInstruction2Byte@inst2:
+   148                           	opt stack 0
+   149                           
+   150                           ; 3 bytes @ 0x4
+   151  000005                     	ds	1
+   152  000006                     delay1000ms@d:
+   153                           	opt stack 0
+   154                           
+   155                           ; 1 bytes @ 0x5
+   156  000006                     	ds	1
+   157  000007                     inst2ToByte@d:
+   158                           	opt stack 0
+   159  000007                     delay1000ms@i:
+   160                           	opt stack 0
+   161                           
+   162                           ; 1 bytes @ 0x6
+   163  000007                     	ds	1
+   164  000008                     ?_constructTransaction2:
+   165                           	opt stack 0
+   166  000008                     inst2ToByte@a:
+   167                           	opt stack 0
+   168  000008                     constructTransaction2@rwb:
+   169                           	opt stack 0
+   170                           
+   171                           ; 1 bytes @ 0x7
+   172  000008                     	ds	1
+   173  000009                     inst2ToByte@b:
+   174                           	opt stack 0
+   175  000009                     constructTransaction2@sz:
+   176                           	opt stack 0
+   177                           
+   178                           ; 1 bytes @ 0x8
+   179  000009                     	ds	1
+   180  00000A                     inst2ToByte@c:
+   181                           	opt stack 0
+   182  00000A                     constructTransaction2@lra:
+   183                           	opt stack 0
+   184                           
+   185                           ; 1 bytes @ 0x9
+   186  00000A                     	ds	1
+   187  00000B                     writeTransaction@t:
+   188                           	opt stack 0
+   189                           
+   190                           ; 6 bytes @ 0xA
+   191  00000B                     	ds	1
+   192  00000C                     constructTransaction2@db:
+   193                           	opt stack 0
+   194                           
+   195                           ; 1 bytes @ 0xB
+   196  00000C                     	ds	1
+   197  00000D                     constructTransaction2@transaction2:
+   198                           	opt stack 0
+   199                           
+   200                           ; 4 bytes @ 0xC
+   201  00000D                     	ds	4
+   202  000011                     writeTransaction@input:
+   203                           	opt stack 0
+   204                           
+   205                           ; 1 bytes @ 0x10
+   206  000011                     	ds	1
+   207  000012                     D_ADC_ReadRegister@data:
+   208                           	opt stack 0
+   209  000012                     D_ADC_WriteRegister@data:
+   210                           	opt stack 0
+   211                           
+   212                           ; 1 bytes @ 0x11
+   213  000012                     	ds	1
+   214  000013                     D_ADC_ReadRegister@addr:
+   215                           	opt stack 0
+   216  000013                     D_ADC_WriteRegister@addr:
+   217                           	opt stack 0
+   218                           
+   219                           ; 1 bytes @ 0x12
+   220  000013                     	ds	1
+   221  000014                     D_ADC_ReadRegister@transaction:
+   222                           	opt stack 0
+   223  000014                     D_ADC_WriteRegister@transaction:
+   224                           	opt stack 0
+   225                           
+   226                           ; 6 bytes @ 0x13
+   227  000014                     	ds	6
+   228  00001A                     main@a:
+   229                           	opt stack 0
+   230                           
+   231                           ; 1 bytes @ 0x19
+   232  00001A                     	ds	1
+   233                           tblptru	equ	0xFF8
+   234                           
+   235 ;;
+   236 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   237 ;;
+   238 ;; *************** function _main *****************
+   239 ;; Defined at:
+   240 ;;		line 53 in file "main.c"
+   241 ;; Parameters:    Size  Location     Type
+   242 ;;		None
+   243 ;; Auto vars:     Size  Location     Type
+   244 ;;  a               1   25[COMRAM] unsigned char 
+   245 ;; Return value:  Size  Location     Type
+   246 ;;                  1    wreg      void 
+   247 ;; Registers used:
+   248 ;;		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, cstack
+   249 ;; Tracked objects:
+   250 ;;		On entry : 0/0
+   251 ;;		On exit  : 0/0
+   252 ;;		Unchanged: 0/0
+   253 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   254 ;;      Params:         0       0       0       0       0       0       0       0       0
+   255 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   256 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   257 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   258 ;;Total ram usage:        1 bytes
+   259 ;; Hardware stack levels required when called:    4
+   260 ;; This function calls:
+   261 ;;		_D_ADC_ReadRegister
+   262 ;;		_D_ADC_WriteRegister
+   263 ;;		_delay1000ms
+   264 ;;		_initialize
+   265 ;; This function is called by:
+   266 ;;		Startup code after reset
+   267 ;; This function uses a non-reentrant model
+   268 ;;
+   269                           
+   270                           	psect	text0
+   271  007E32                     __ptext0:
+   272                           	opt stack 0
+   273  007E32                     _main:
+   274                           	opt stack 27
+   275                           
+   276                           ;main.c: 55: initialize();
+   277                           
+   278                           ;incstack = 0
+   279  007E32  EC7D  F03E         	call	_initialize	;wreg free
+   280                           
+   281                           ;main.c: 57: delay1000ms(2);
+   282  007E36  0E02               	movlw	2
+   283  007E38  ECBD  F03E         	call	_delay1000ms
+   284                           
+   285                           ;main.c: 58: D_ADC_WriteRegister(0x09, 0x16);
+   286  007E3C  0E16               	movlw	22
+   287  007E3E  6E12               	movwf	D_ADC_WriteRegister@data,c
+   288  007E40  0E09               	movlw	9
+   289  007E42  EC70  F03F         	call	_D_ADC_WriteRegister
+   290                           
+   291                           ;main.c: 59: uint8_t a = D_ADC_ReadRegister(0x09);
+   292  007E46  0E09               	movlw	9
+   293  007E48  EC9A  F03F         	call	_D_ADC_ReadRegister
+   294  007E4C  6E1A               	movwf	main@a,c
+   295                           
+   296                           ;main.c: 64: D_ADC_WriteRegister(0x0E, 0x00);
+   297  007E4E  0E00               	movlw	0
+   298  007E50  6E12               	movwf	D_ADC_WriteRegister@data,c
+   299  007E52  0E0E               	movlw	14
+   300  007E54  EC70  F03F         	call	_D_ADC_WriteRegister
+   301                           
+   302                           ;main.c: 65: D_ADC_WriteRegister(0x0F, 0x02);
+   303  007E58  0E02               	movlw	2
+   304  007E5A  6E12               	movwf	D_ADC_WriteRegister@data,c
+   305  007E5C  0E0F               	movlw	15
+   306  007E5E  EC70  F03F         	call	_D_ADC_WriteRegister
+   307  007E62                     l132:
+   308  007E62  D7FF               	goto	l132
+   309  007E64                     __end_of_main:
+   310                           	opt stack 0
+   311                           tblptru	equ	0xFF8
+   312                           
+   313 ;; *************** function _initialize *****************
+   314 ;; Defined at:
+   315 ;;		line 48 in file "main.c"
+   316 ;; Parameters:    Size  Location     Type
+   317 ;;		None
+   318 ;; Auto vars:     Size  Location     Type
+   319 ;;		None
+   320 ;; Return value:  Size  Location     Type
+   321 ;;                  1    wreg      void 
+   322 ;; Registers used:
+   323 ;;		wreg, status,2, status,0, cstack
+   324 ;; Tracked objects:
+   325 ;;		On entry : 0/0
+   326 ;;		On exit  : 0/0
+   327 ;;		Unchanged: 0/0
+   328 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   329 ;;      Params:         0       0       0       0       0       0       0       0       0
+   330 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   331 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   332 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   333 ;;Total ram usage:        0 bytes
+   334 ;; Hardware stack levels used:    1
+   335 ;; Hardware stack levels required when called:    3
+   336 ;; This function calls:
+   337 ;;		_D_ADC_Init
+   338 ;;		_D_PORT_Init
+   339 ;; This function is called by:
+   340 ;;		_main
+   341 ;; This function uses a non-reentrant model
+   342 ;;
+   343                           
+   344                           	psect	text1
+   345  007CFA                     __ptext1:
+   346                           	opt stack 0
+   347  007CFA                     _initialize:
+   348                           	opt stack 27
+   349                           
+   350                           ;main.c: 49: D_PORT_Init();
+   351                           
+   352                           ;incstack = 0
+   353  007CFA  ECE9  F03E         	call	_D_PORT_Init	;wreg free
+   354                           
+   355                           ;main.c: 50: D_ADC_Init();
+   356  007CFE  ECA5  F03E         	call	_D_ADC_Init	;wreg free
+   357  007D02  0012               	return		;funcret
+   358  007D04                     __end_of_initialize:
+   359                           	opt stack 0
+   360                           tblptru	equ	0xFF8
+   361                           
+   362 ;; *************** function _D_PORT_Init *****************
+   363 ;; Defined at:
+   364 ;;		line 31 in file "Drivers/PORT_Driver.c"
+   365 ;; Parameters:    Size  Location     Type
+   366 ;;		None
+   367 ;; Auto vars:     Size  Location     Type
+   368 ;;		None
+   369 ;; Return value:  Size  Location     Type
+   370 ;;                  1    wreg      void 
+   371 ;; Registers used:
+   372 ;;		wreg, status,2
+   373 ;; Tracked objects:
+   374 ;;		On entry : 0/0
+   375 ;;		On exit  : 0/0
+   376 ;;		Unchanged: 0/0
+   377 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   378 ;;      Params:         0       0       0       0       0       0       0       0       0
+   379 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   380 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   381 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   382 ;;Total ram usage:        0 bytes
+   383 ;; Hardware stack levels used:    1
+   384 ;; This function calls:
+   385 ;;		Nothing
+   386 ;; This function is called by:
+   387 ;;		_initialize
+   388 ;; This function uses a non-reentrant model
+   389 ;;
+   390                           
+   391                           	psect	text2
+   392  007DD2                     __ptext2:
+   393                           	opt stack 0
+   394  007DD2                     _D_PORT_Init:
+   395                           	opt stack 29
+   396                           
+   397                           ;PORT_Driver.c: 32: TRISA = 0x00; PORTA = 0x00;
+   398                           
+   399                           ;incstack = 0
+   400  007DD2  0E00               	movlw	0
+   401  007DD4  6E92               	movwf	3986,c	;volatile
+   402  007DD6  0E00               	movlw	0
+   403  007DD8  6E80               	movwf	3968,c	;volatile
+   404                           
+   405                           ;PORT_Driver.c: 33: TRISB = 0x00; PORTB = 0x00;
+   406  007DDA  0E00               	movlw	0
+   407  007DDC  6E93               	movwf	3987,c	;volatile
+   408  007DDE  0E00               	movlw	0
+   409  007DE0  6E81               	movwf	3969,c	;volatile
+   410                           
+   411                           ;PORT_Driver.c: 34: TRISC = 0x00; PORTC = 0x00;
+   412  007DE2  0E00               	movlw	0
+   413  007DE4  6E94               	movwf	3988,c	;volatile
+   414  007DE6  0E00               	movlw	0
+   415  007DE8  6E82               	movwf	3970,c	;volatile
+   416                           
+   417                           ;PORT_Driver.c: 35: ADCON1 = 0x0F;
+   418  007DEA  0E0F               	movlw	15
+   419  007DEC  6EC1               	movwf	4033,c	;volatile
+   420                           
+   421                           ;PORT_Driver.c: 37: TRISBbits.TRISB3 = 0; LATBbits.LATB3 = 0;
+   422  007DEE  9693               	bcf	3987,3,c	;volatile
+   423  007DF0  968A               	bcf	3978,3,c	;volatile
+   424                           
+   425                           ;PORT_Driver.c: 38: TRISBbits.TRISB4 = 0; LATBbits.LATB4 = 0;
+   426  007DF2  9893               	bcf	3987,4,c	;volatile
+   427  007DF4  988A               	bcf	3978,4,c	;volatile
+   428                           
+   429                           ;PORT_Driver.c: 39: TRISBbits.TRISB5 = 0; LATBbits.LATB5 = 0;
+   430  007DF6  9A93               	bcf	3987,5,c	;volatile
+   431  007DF8  9A8A               	bcf	3978,5,c	;volatile
+   432                           
+   433                           ;PORT_Driver.c: 40: TRISBbits.TRISB6 = 0; LATBbits.LATB6 = 0;
+   434  007DFA  9C93               	bcf	3987,6,c	;volatile
+   435  007DFC  9C8A               	bcf	3978,6,c	;volatile
+   436  007DFE  0012               	return		;funcret
+   437  007E00                     __end_of_D_PORT_Init:
+   438                           	opt stack 0
+   439                           tblptru	equ	0xFF8
+   440                           
+   441 ;; *************** function _D_ADC_Init *****************
+   442 ;; Defined at:
+   443 ;;		line 82 in file "Drivers/ADC_Driver.c"
+   444 ;; Parameters:    Size  Location     Type
+   445 ;;		None
+   446 ;; Auto vars:     Size  Location     Type
+   447 ;;		None
+   448 ;; Return value:  Size  Location     Type
+   449 ;;                  1    wreg      void 
+   450 ;; Registers used:
+   451 ;;		wreg, status,2, status,0, cstack
+   452 ;; Tracked objects:
+   453 ;;		On entry : 0/0
+   454 ;;		On exit  : 0/0
+   455 ;;		Unchanged: 0/0
+   456 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   457 ;;      Params:         0       0       0       0       0       0       0       0       0
+   458 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   459 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   460 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   461 ;;Total ram usage:        0 bytes
+   462 ;; Hardware stack levels used:    1
+   463 ;; Hardware stack levels required when called:    2
+   464 ;; This function calls:
+   465 ;;		_D_SPI_Enable
+   466 ;;		_D_SPI_Init
+   467 ;; This function is called by:
+   468 ;;		_initialize
+   469 ;; This function uses a non-reentrant model
+   470 ;;
+   471                           
+   472                           	psect	text3
+   473  007D4A                     __ptext3:
+   474                           	opt stack 0
+   475  007D4A                     _D_ADC_Init:
+   476                           	opt stack 27
+   477                           
+   478                           ;ADC_Driver.c: 84: TRISBbits.TRISB2 = 0;
+   479                           
+   480                           ;incstack = 0
+   481  007D4A  9493               	bcf	3987,2,c	;volatile
+   482                           
+   483                           ;ADC_Driver.c: 85: PORTBbits.RB2 = 1;
+   484  007D4C  8481               	bsf	3969,2,c	;volatile
+   485                           
+   486                           ;ADC_Driver.c: 88: D_SPI_Init(0, 5);
+   487  007D4E  0E05               	movlw	5
+   488  007D50  6E02               	movwf	D_SPI_Init@mode,c
+   489  007D52  0E00               	movlw	0
+   490  007D54  ECC6  F03F         	call	_D_SPI_Init
+   491                           
+   492                           ;ADC_Driver.c: 89: D_SPI_Enable(1);
+   493  007D58  0E01               	movlw	1
+   494  007D5A  EC9A  F03E         	call	_D_SPI_Enable
+   495  007D5E  0012               	return		;funcret
+   496  007D60                     __end_of_D_ADC_Init:
+   497                           	opt stack 0
+   498                           tblptru	equ	0xFF8
+   499                           
+   500 ;; *************** function _D_SPI_Init *****************
+   501 ;; Defined at:
+   502 ;;		line 32 in file "Drivers/SPI_Driver.c"
+   503 ;; Parameters:    Size  Location     Type
+   504 ;;  MS              1    wreg     unsigned char 
+   505 ;;  mode            1    1[COMRAM] unsigned char 
+   506 ;; Auto vars:     Size  Location     Type
+   507 ;;  MS              1    2[COMRAM] unsigned char 
+   508 ;; Return value:  Size  Location     Type
+   509 ;;                  1    wreg      void 
+   510 ;; Registers used:
+   511 ;;		wreg, status,2, status,0, cstack
+   512 ;; Tracked objects:
+   513 ;;		On entry : 0/0
+   514 ;;		On exit  : 0/0
+   515 ;;		Unchanged: 0/0
+   516 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   517 ;;      Params:         1       0       0       0       0       0       0       0       0
+   518 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   519 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   520 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   521 ;;Total ram usage:        2 bytes
+   522 ;; Hardware stack levels used:    1
+   523 ;; Hardware stack levels required when called:    1
+   524 ;; This function calls:
+   525 ;;		_D_SPI_Enable
+   526 ;; This function is called by:
+   527 ;;		_D_ADC_Init
+   528 ;; This function uses a non-reentrant model
+   529 ;;
+   530                           
+   531                           	psect	text4
+   532  007F8C                     __ptext4:
+   533                           	opt stack 0
+   534  007F8C                     _D_SPI_Init:
+   535                           	opt stack 27
+   536                           
+   537                           ;incstack = 0
+   538                           ;D_SPI_Init@MS stored from wreg
+   539  007F8C  6E03               	movwf	D_SPI_Init@MS,c
+   540                           
+   541                           ;SPI_Driver.c: 34: TRISBbits.TRISB1 = MS;
+   542  007F8E  B003               	btfsc	D_SPI_Init@MS,0,c
+   543  007F90  D002               	bra	u115
+   544  007F92  9293               	bcf	3987,1,c	;volatile
+   545  007F94  D001               	bra	u116
+   546  007F96                     u115:
+   547  007F96  8293               	bsf	3987,1,c	;volatile
+   548  007F98                     u116:
+   549                           
+   550                           ;SPI_Driver.c: 35: TRISCbits.TRISC7 = 0;
+   551  007F98  9E94               	bcf	3988,7,c	;volatile
+   552                           
+   553                           ;SPI_Driver.c: 36: TRISBbits.TRISB0 = 1;
+   554  007F9A  8093               	bsf	3987,0,c	;volatile
+   555                           
+   556                           ;SPI_Driver.c: 39: SSPBUF = 0x00;
+   557  007F9C  0E00               	movlw	0
+   558  007F9E  6EC9               	movwf	4041,c	;volatile
+   559                           
+   560                           ;SPI_Driver.c: 42: D_SPI_Enable(0);
+   561  007FA0  0E00               	movlw	0
+   562  007FA2  EC9A  F03E         	call	_D_SPI_Enable
+   563                           
+   564                           ;SPI_Driver.c: 44: switch(mode) {
+   565  007FA6  D011               	goto	l923
+   566  007FA8                     l18:
+   567                           
+   568                           ;SPI_Driver.c: 46: SSPSTATbits.SMP = 0;
+   569  007FA8  9EC7               	bcf	4039,7,c	;volatile
+   570                           
+   571                           ;SPI_Driver.c: 47: SSPSTATbits.CKE = 1;
+   572  007FAA  8CC7               	bsf	4039,6,c	;volatile
+   573  007FAC  D002               	goto	L1
+   574  007FAE                     l20:
+   575                           
+   576                           ;SPI_Driver.c: 51: SSPSTATbits.SMP = 1;
+   577  007FAE  8EC7               	bsf	4039,7,c	;volatile
+   578                           
+   579                           ;SPI_Driver.c: 52: SSPSTATbits.CKE = 0;
+   580  007FB0  9CC7               	bcf	4039,6,c	;volatile
+   581  007FB2                     L1:
+   582                           
+   583                           ;SPI_Driver.c: 53: SSPCON1bits.CKP = 0;
+   584  007FB2  98C6               	bcf	4038,4,c	;volatile
+   585                           
+   586                           ;SPI_Driver.c: 54: break;
+   587  007FB4  D018               	goto	l925
+   588  007FB6                     l21:
+   589                           
+   590                           ;SPI_Driver.c: 56: SSPSTATbits.SMP = 0;
+   591  007FB6  9EC7               	bcf	4039,7,c	;volatile
+   592                           
+   593                           ;SPI_Driver.c: 57: SSPSTATbits.CKE = 1;
+   594  007FB8  8CC7               	bsf	4039,6,c	;volatile
+   595  007FBA  D002               	goto	L2
+   596  007FBC                     l22:
+   597                           
+   598                           ;SPI_Driver.c: 61: SSPSTATbits.SMP = 1;
+   599  007FBC  8EC7               	bsf	4039,7,c	;volatile
+   600  007FBE  D003               	goto	L3
+   601  007FC0                     L2:
+   602                           
+   603                           ;SPI_Driver.c: 63: SSPCON1bits.CKP = 1;
+   604  007FC0  88C6               	bsf	4038,4,c	;volatile
+   605                           
+   606                           ;SPI_Driver.c: 64: break;
+   607  007FC2  D011               	goto	l925
+   608  007FC4                     l23:
+   609                           
+   610                           ;SPI_Driver.c: 66: SSPSTATbits.SMP = 0;
+   611  007FC4  9EC7               	bcf	4039,7,c	;volatile
+   612  007FC6                     L3:
+   613                           
+   614                           ;SPI_Driver.c: 67: SSPSTATbits.CKE = 0;
+   615  007FC6  9CC7               	bcf	4039,6,c	;volatile
+   616  007FC8  D7FB               	goto	L2
+   617  007FCA                     l923:
+   618  007FCA  5002               	movf	D_SPI_Init@mode,w,c
+   619                           
+   620                           ; Switch size 1, requested type "space"
+   621                           ; Number of cases is 4, Range of values is 0 to 3
+   622                           ; switch strategies available:
+   623                           ; Name         Instructions Cycles
+   624                           ; simple_byte           13     7 (average)
+   625                           ;	Chosen strategy is simple_byte
+   626  007FCC  0A00               	xorlw	0	; case 0
+   627  007FCE  B4D8               	btfsc	status,2,c
+   628  007FD0  D7EB               	goto	l18
+   629  007FD2  0A01               	xorlw	1	; case 1
+   630  007FD4  B4D8               	btfsc	status,2,c
+   631  007FD6  D7EB               	goto	l20
+   632  007FD8  0A03               	xorlw	3	; case 2
+   633  007FDA  B4D8               	btfsc	status,2,c
+   634  007FDC  D7EC               	goto	l21
+   635  007FDE  0A01               	xorlw	1	; case 3
+   636  007FE0  B4D8               	btfsc	status,2,c
+   637  007FE2  D7EC               	goto	l22
+   638  007FE4  D7EF               	goto	l23
+   639  007FE6                     l925:
+   640                           
+   641                           ;SPI_Driver.c: 73: if (MS) {
+   642  007FE6  5003               	movf	D_SPI_Init@MS,w,c
+   643  007FE8  B4D8               	btfsc	status,2,c
+   644  007FEA  D004               	goto	l929
+   645                           
+   646                           ;SPI_Driver.c: 74: SSPCON1bits.SSPM = 0b1010;
+   647  007FEC  50C6               	movf	4038,w,c	;volatile
+   648  007FEE  0BF0               	andlw	-16
+   649  007FF0  090A               	iorlw	10
+   650  007FF2  D003               	goto	L4
+   651  007FF4                     l929:
+   652                           
+   653                           ;SPI_Driver.c: 76: SSPCON1bits.SSPM = 0b0010;
+   654  007FF4  50C6               	movf	4038,w,c	;volatile
+   655  007FF6  0BF0               	andlw	-16
+   656  007FF8  0902               	iorlw	2
+   657  007FFA                     L4:
+   658  007FFA  6EC6               	movwf	4038,c	;volatile
+   659                           
+   660                           ;SPI_Driver.c: 77: }
+   661                           ;SPI_Driver.c: 80: PIR1bits.SSPIF = 0;
+   662  007FFC  969E               	bcf	3998,3,c	;volatile
+   663  007FFE  0012               	return		;funcret
+   664  008000                     __end_of_D_SPI_Init:
+   665                           	opt stack 0
+   666                           tblptru	equ	0xFF8
+   667                           status	equ	0xFD8
+   668                           
+   669 ;; *************** function _D_SPI_Enable *****************
+   670 ;; Defined at:
+   671 ;;		line 96 in file "Drivers/SPI_Driver.c"
+   672 ;; Parameters:    Size  Location     Type
+   673 ;;  enable          1    wreg     unsigned char 
+   674 ;; Auto vars:     Size  Location     Type
+   675 ;;  enable          1    0[COMRAM] unsigned char 
+   676 ;; Return value:  Size  Location     Type
+   677 ;;                  1    wreg      void 
+   678 ;; Registers used:
+   679 ;;		wreg, status,2
+   680 ;; Tracked objects:
+   681 ;;		On entry : 0/0
+   682 ;;		On exit  : 0/0
+   683 ;;		Unchanged: 0/0
+   684 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   685 ;;      Params:         0       0       0       0       0       0       0       0       0
+   686 ;;      Locals:         1       0       0       0       0       0       0       0       0
+   687 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   688 ;;      Totals:         1       0       0       0       0       0       0       0       0
+   689 ;;Total ram usage:        1 bytes
+   690 ;; Hardware stack levels used:    1
+   691 ;; This function calls:
+   692 ;;		Nothing
+   693 ;; This function is called by:
+   694 ;;		_D_SPI_Init
+   695 ;;		_D_ADC_Init
+   696 ;; This function uses a non-reentrant model
+   697 ;;
+   698                           
+   699                           	psect	text5
+   700  007D34                     __ptext5:
+   701                           	opt stack 0
+   702  007D34                     _D_SPI_Enable:
+   703                           	opt stack 27
+   704                           
+   705                           ;incstack = 0
+   706                           ;D_SPI_Enable@enable stored from wreg
+   707  007D34  6E01               	movwf	D_SPI_Enable@enable,c
+   708                           
+   709                           ;SPI_Driver.c: 97: if (enable) {
+   710  007D36  5001               	movf	D_SPI_Enable@enable,w,c
+   711  007D38  B4D8               	btfsc	status,2,c
+   712  007D3A  D005               	goto	l38
+   713                           
+   714                           ;SPI_Driver.c: 98: TRISBbits.TRISB1 = 0;
+   715  007D3C  9293               	bcf	3987,1,c	;volatile
+   716                           
+   717                           ;SPI_Driver.c: 99: TRISCbits.TRISC7 = 0;
+   718  007D3E  9E94               	bcf	3988,7,c	;volatile
+   719                           
+   720                           ;SPI_Driver.c: 100: TRISBbits.TRISB0 = 1;
+   721  007D40  8093               	bsf	3987,0,c	;volatile
+   722                           
+   723                           ;SPI_Driver.c: 101: SSPCON1bits.SSPEN = 1;
+   724  007D42  8AC6               	bsf	4038,5,c	;volatile
+   725                           
+   726                           ;SPI_Driver.c: 102: } else {
+   727  007D44  0012               	return	
+   728  007D46                     l38:
+   729                           
+   730                           ;SPI_Driver.c: 103: SSPCON1bits.SSPEN = 0;
+   731  007D46  9AC6               	bcf	4038,5,c	;volatile
+   732  007D48  0012               	return	
+   733  007D4A                     __end_of_D_SPI_Enable:
+   734                           	opt stack 0
+   735                           tblptru	equ	0xFF8
+   736                           status	equ	0xFD8
+   737                           
+   738 ;; *************** function _delay1000ms *****************
+   739 ;; Defined at:
+   740 ;;		line 40 in file "main.c"
+   741 ;; Parameters:    Size  Location     Type
+   742 ;;  d               1    wreg     unsigned char 
+   743 ;; Auto vars:     Size  Location     Type
+   744 ;;  d               1    5[COMRAM] unsigned char 
+   745 ;;  i               1    6[COMRAM] unsigned char 
+   746 ;; Return value:  Size  Location     Type
+   747 ;;                  1    wreg      void 
+   748 ;; Registers used:
+   749 ;;		wreg, status,2, status,0, cstack
+   750 ;; Tracked objects:
+   751 ;;		On entry : 0/0
+   752 ;;		On exit  : 0/0
+   753 ;;		Unchanged: 0/0
+   754 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   755 ;;      Params:         0       0       0       0       0       0       0       0       0
+   756 ;;      Locals:         2       0       0       0       0       0       0       0       0
+   757 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   758 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   759 ;;Total ram usage:        2 bytes
+   760 ;; Hardware stack levels used:    1
+   761 ;; Hardware stack levels required when called:    2
+   762 ;; This function calls:
+   763 ;;		_delay100ms
+   764 ;; This function is called by:
+   765 ;;		_main
+   766 ;; This function uses a non-reentrant model
+   767 ;;
+   768                           
+   769                           	psect	text6
+   770  007D7A                     __ptext6:
+   771                           	opt stack 0
+   772  007D7A                     _delay1000ms:
+   773                           	opt stack 28
+   774                           
+   775                           ;incstack = 0
+   776                           ;delay1000ms@d stored from wreg
+   777  007D7A  6E06               	movwf	delay1000ms@d,c
+   778                           
+   779                           ;main.c: 41: uint8_t i = 0;
+   780  007D7C  0E00               	movlw	0
+   781  007D7E  6E07               	movwf	delay1000ms@i,c
+   782                           
+   783                           ;main.c: 42: while(i < d) {
+   784  007D80  D004               	goto	l893
+   785  007D82                     l889:
+   786                           
+   787                           ;main.c: 43: delay100ms(10);
+   788  007D82  0E0A               	movlw	10
+   789  007D84  ECB0  F03E         	call	_delay100ms
+   790                           
+   791                           ;main.c: 44: i++;
+   792  007D88  2A07               	incf	delay1000ms@i,f,c
+   793  007D8A                     l893:
+   794  007D8A  5006               	movf	delay1000ms@d,w,c
+   795  007D8C  5C07               	subwf	delay1000ms@i,w,c
+   796  007D8E  B0D8               	btfsc	status,0,c
+   797  007D90  0012               	return	
+   798  007D92  D7F7               	goto	l889
+   799  007D94                     __end_of_delay1000ms:
+   800                           	opt stack 0
+   801                           tblptru	equ	0xFF8
+   802                           status	equ	0xFD8
+   803                           
+   804 ;; *************** function _delay100ms *****************
+   805 ;; Defined at:
+   806 ;;		line 32 in file "main.c"
+   807 ;; Parameters:    Size  Location     Type
+   808 ;;  d               1    wreg     unsigned char 
+   809 ;; Auto vars:     Size  Location     Type
+   810 ;;  d               1    3[COMRAM] unsigned char 
+   811 ;;  i               1    4[COMRAM] unsigned char 
+   812 ;; Return value:  Size  Location     Type
+   813 ;;                  1    wreg      void 
+   814 ;; Registers used:
+   815 ;;		wreg, status,2, status,0, cstack
+   816 ;; Tracked objects:
+   817 ;;		On entry : 0/0
+   818 ;;		On exit  : 0/0
+   819 ;;		Unchanged: 0/0
+   820 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   821 ;;      Params:         0       0       0       0       0       0       0       0       0
+   822 ;;      Locals:         2       0       0       0       0       0       0       0       0
+   823 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   824 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   825 ;;Total ram usage:        2 bytes
+   826 ;; Hardware stack levels used:    1
+   827 ;; Hardware stack levels required when called:    1
+   828 ;; This function calls:
+   829 ;;		_delay10ms
+   830 ;; This function is called by:
+   831 ;;		_delay1000ms
+   832 ;; This function uses a non-reentrant model
+   833 ;;
+   834                           
+   835                           	psect	text7
+   836  007D60                     __ptext7:
+   837                           	opt stack 0
+   838  007D60                     _delay100ms:
+   839                           	opt stack 28
+   840                           
+   841                           ;incstack = 0
+   842                           ;delay100ms@d stored from wreg
+   843  007D60  6E04               	movwf	delay100ms@d,c
+   844                           
+   845                           ;main.c: 33: uint8_t i = 0;
+   846  007D62  0E00               	movlw	0
+   847  007D64  6E05               	movwf	delay100ms@i,c
+   848                           
+   849                           ;main.c: 34: while(i < d) {
+   850  007D66  D004               	goto	l871
+   851  007D68                     l867:
+   852                           
+   853                           ;main.c: 35: delay10ms(10);
+   854  007D68  0E0A               	movlw	10
+   855  007D6A  ECD8  F03E         	call	_delay10ms
+   856                           
+   857                           ;main.c: 36: i++;
+   858  007D6E  2A05               	incf	delay100ms@i,f,c
+   859  007D70                     l871:
+   860  007D70  5004               	movf	delay100ms@d,w,c
+   861  007D72  5C05               	subwf	delay100ms@i,w,c
+   862  007D74  B0D8               	btfsc	status,0,c
+   863  007D76  0012               	return	
+   864  007D78  D7F7               	goto	l867
+   865  007D7A                     __end_of_delay100ms:
+   866                           	opt stack 0
+   867                           tblptru	equ	0xFF8
+   868                           status	equ	0xFD8
+   869                           
+   870 ;; *************** function _delay10ms *****************
+   871 ;; Defined at:
+   872 ;;		line 24 in file "main.c"
+   873 ;; Parameters:    Size  Location     Type
+   874 ;;  d               1    wreg     unsigned char 
+   875 ;; Auto vars:     Size  Location     Type
+   876 ;;  d               1    1[COMRAM] unsigned char 
+   877 ;;  i               1    2[COMRAM] unsigned char 
+   878 ;; Return value:  Size  Location     Type
+   879 ;;                  1    wreg      void 
+   880 ;; Registers used:
+   881 ;;		wreg, status,2, status,0, cstack
+   882 ;; Tracked objects:
+   883 ;;		On entry : 0/0
+   884 ;;		On exit  : 0/0
+   885 ;;		Unchanged: 0/0
+   886 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   887 ;;      Params:         0       0       0       0       0       0       0       0       0
+   888 ;;      Locals:         2       0       0       0       0       0       0       0       0
+   889 ;;      Temps:          1       0       0       0       0       0       0       0       0
+   890 ;;      Totals:         3       0       0       0       0       0       0       0       0
+   891 ;;Total ram usage:        3 bytes
+   892 ;; Hardware stack levels used:    1
+   893 ;; This function calls:
+   894 ;;		Nothing
+   895 ;; This function is called by:
+   896 ;;		_delay100ms
+   897 ;; This function uses a non-reentrant model
+   898 ;;
+   899                           
+   900                           	psect	text8
+   901  007DB0                     __ptext8:
+   902                           	opt stack 0
+   903  007DB0                     _delay10ms:
+   904                           	opt stack 28
+   905                           
+   906                           ;incstack = 0
+   907                           ;delay10ms@d stored from wreg
+   908  007DB0  6E02               	movwf	delay10ms@d,c
+   909                           
+   910                           ;main.c: 25: uint8_t i = 0;
+   911  007DB2  0E00               	movlw	0
+   912  007DB4  6E03               	movwf	delay10ms@i,c
+   913                           
+   914                           ;main.c: 26: while(i < d) {
+   915  007DB6  D008               	goto	l805
+   916  007DB8                     l801:
+   917                           
+   918                           ;main.c: 27: _delay((unsigned long)((10)*(16000000/4000.0)));
+   919  007DB8  0E34               	movlw	52
+   920  007DBA  6E01               	movwf	??_delay10ms& (0+255),c
+   921  007DBC  0EF2               	movlw	242
+   922  007DBE                     u167:
+   923  007DBE  2EE8               	decfsz	wreg,f,c
+   924  007DC0  D7FE               	bra	u167
+   925  007DC2  2E01               	decfsz	??_delay10ms& (0+255),f,c
+   926  007DC4  D7FC               	bra	u167
+   927                           
+   928                           ;main.c: 28: i++;
+   929  007DC6  2A03               	incf	delay10ms@i,f,c
+   930  007DC8                     l805:
+   931  007DC8  5002               	movf	delay10ms@d,w,c
+   932  007DCA  5C03               	subwf	delay10ms@i,w,c
+   933  007DCC  B0D8               	btfsc	status,0,c
+   934  007DCE  0012               	return	
+   935  007DD0  D7F3               	goto	l801
+   936  007DD2                     __end_of_delay10ms:
+   937                           	opt stack 0
+   938                           tblptru	equ	0xFF8
+   939                           wreg	equ	0xFE8
+   940                           status	equ	0xFD8
+   941                           
+   942 ;; *************** function _D_ADC_WriteRegister *****************
+   943 ;; Defined at:
+   944 ;;		line 107 in file "Drivers/ADC_Driver.c"
+   945 ;; Parameters:    Size  Location     Type
+   946 ;;  addr            1    wreg     unsigned char 
+   947 ;;  data            1   17[COMRAM] unsigned char 
+   948 ;; Auto vars:     Size  Location     Type
+   949 ;;  addr            1   18[COMRAM] unsigned char 
+   950 ;;  transaction     6   19[COMRAM] struct .
+   951 ;; Return value:  Size  Location     Type
+   952 ;;                  1    wreg      void 
+   953 ;; Registers used:
+   954 ;;		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, cstack
+   955 ;; Tracked objects:
+   956 ;;		On entry : 0/0
+   957 ;;		On exit  : 0/0
+   958 ;;		Unchanged: 0/0
+   959 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   960 ;;      Params:         1       0       0       0       0       0       0       0       0
+   961 ;;      Locals:         7       0       0       0       0       0       0       0       0
+   962 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   963 ;;      Totals:         8       0       0       0       0       0       0       0       0
+   964 ;;Total ram usage:        8 bytes
+   965 ;; Hardware stack levels used:    1
+   966 ;; Hardware stack levels required when called:    2
+   967 ;; This function calls:
+   968 ;;		_constructTransaction1
+   969 ;;		_constructTransaction2
+   970 ;;		_writeTransaction
+   971 ;; This function is called by:
+   972 ;;		_main
+   973 ;; This function uses a non-reentrant model
+   974 ;;
+   975                           
+   976                           	psect	text9
+   977  007EE0                     __ptext9:
+   978                           	opt stack 0
+   979  007EE0                     _D_ADC_WriteRegister:
+   980                           	opt stack 28
+   981                           
+   982                           ;incstack = 0
+   983                           ;D_ADC_WriteRegister@addr stored from wreg
+   984  007EE0  6E13               	movwf	D_ADC_WriteRegister@addr,c
+   985                           
+   986                           ;ADC_Driver.c: 108: transaction_t transaction;
+   987                           ;ADC_Driver.c: 109: transaction.transaction1 = constructTransaction1(0x10, ((addr >> 4) 
+      +                          & 0x07));
+   988  007EE2  3813               	swapf	D_ADC_WriteRegister@addr,w,c
+   989  007EE4  0B0F               	andlw	15
+   990  007EE6  0B07               	andlw	7
+   991  007EE8  6E01               	movwf	constructTransaction1@uab,c
+   992  007EEA  0E10               	movlw	16
+   993  007EEC  EC8F  F03E         	call	_constructTransaction1
+   994  007EF0  C001  F014         	movff	?_constructTransaction1,D_ADC_WriteRegister@transaction
+   995  007EF4  C002  F015         	movff	?_constructTransaction1+1,D_ADC_WriteRegister@transaction+1
+   996                           
+   997                           ;ADC_Driver.c: 110: transaction.transaction2 = constructTransaction2(data, 0x00, 0x00, (
+      +                          addr & 0x0F));
+   998  007EF8  0E00               	movlw	0
+   999  007EFA  6E08               	movwf	constructTransaction2@rwb,c
+  1000  007EFC  0E00               	movlw	0
+  1001  007EFE  6E09               	movwf	constructTransaction2@sz,c
+  1002  007F00  5013               	movf	D_ADC_WriteRegister@addr,w,c
+  1003  007F02  0B0F               	andlw	15
+  1004  007F04  6E0A               	movwf	constructTransaction2@lra,c
+  1005  007F06  5012               	movf	D_ADC_WriteRegister@data,w,c
+  1006  007F08  EC00  F03F         	call	_constructTransaction2
+  1007  007F0C  C008  F016         	movff	?_constructTransaction2,D_ADC_WriteRegister@transaction+2
+  1008  007F10  C009  F017         	movff	?_constructTransaction2+1,D_ADC_WriteRegister@transaction+3
+  1009  007F14  C00A  F018         	movff	?_constructTransaction2+2,D_ADC_WriteRegister@transaction+4
+  1010  007F18  C00B  F019         	movff	?_constructTransaction2+3,D_ADC_WriteRegister@transaction+5
+  1011                           
+  1012                           ;ADC_Driver.c: 111: writeTransaction(transaction);
+  1013  007F1C  EE20  F014         	lfsr	2,D_ADC_WriteRegister@transaction
+  1014  007F20  EE00  F00B         	lfsr	0,writeTransaction@t
+  1015  007F24  0E05               	movlw	5
+  1016  007F26                     u151:
+  1017  007F26  CFDB FFEB          	movff	plusw2,plusw0
+  1018  007F2A  06E8               	decf	wreg,f,c
+  1019  007F2C  E2FC               	bc	u151
+  1020  007F2E  EC32  F03F         	call	_writeTransaction	;wreg free
+  1021  007F32  0012               	return		;funcret
+  1022  007F34                     __end_of_D_ADC_WriteRegister:
+  1023                           	opt stack 0
+  1024                           tblptru	equ	0xFF8
+  1025                           plusw0	equ	0xFEB
+  1026                           wreg	equ	0xFE8
+  1027                           plusw2	equ	0xFDB
+  1028                           status	equ	0xFD8
+  1029                           
+  1030 ;; *************** function _D_ADC_ReadRegister *****************
+  1031 ;; Defined at:
+  1032 ;;		line 99 in file "Drivers/ADC_Driver.c"
+  1033 ;; Parameters:    Size  Location     Type
+  1034 ;;  addr            1    wreg     unsigned char 
+  1035 ;; Auto vars:     Size  Location     Type
+  1036 ;;  addr            1   18[COMRAM] unsigned char 
+  1037 ;;  transaction     6   19[COMRAM] struct .
+  1038 ;;  data            1   17[COMRAM] unsigned char 
+  1039 ;; Return value:  Size  Location     Type
+  1040 ;;                  1    wreg      unsigned char 
+  1041 ;; Registers used:
+  1042 ;;		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, cstack
+  1043 ;; Tracked objects:
+  1044 ;;		On entry : 0/0
+  1045 ;;		On exit  : 0/0
+  1046 ;;		Unchanged: 0/0
+  1047 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1048 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1049 ;;      Locals:         8       0       0       0       0       0       0       0       0
+  1050 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1051 ;;      Totals:         8       0       0       0       0       0       0       0       0
+  1052 ;;Total ram usage:        8 bytes
+  1053 ;; Hardware stack levels used:    1
+  1054 ;; Hardware stack levels required when called:    2
+  1055 ;; This function calls:
+  1056 ;;		_constructTransaction1
+  1057 ;;		_constructTransaction2
+  1058 ;;		_writeTransaction
+  1059 ;; This function is called by:
+  1060 ;;		_main
+  1061 ;; This function uses a non-reentrant model
+  1062 ;;
+  1063                           
+  1064                           	psect	text10
+  1065  007F34                     __ptext10:
+  1066                           	opt stack 0
+  1067  007F34                     _D_ADC_ReadRegister:
+  1068                           	opt stack 28
+  1069                           
+  1070                           ;incstack = 0
+  1071                           ;D_ADC_ReadRegister@addr stored from wreg
+  1072  007F34  6E13               	movwf	D_ADC_ReadRegister@addr,c
+  1073                           
+  1074                           ;ADC_Driver.c: 100: uint8_t data = 0x00;
+  1075  007F36  0E00               	movlw	0
+  1076  007F38  6E12               	movwf	D_ADC_ReadRegister@data,c
+  1077                           
+  1078                           ;ADC_Driver.c: 101: transaction_t transaction;
+  1079                           ;ADC_Driver.c: 102: transaction.transaction1 = constructTransaction1(0x10, ((addr >> 4) 
+      +                          & 0x07));
+  1080  007F3A  3813               	swapf	D_ADC_ReadRegister@addr,w,c
+  1081  007F3C  0B0F               	andlw	15
+  1082  007F3E  0B07               	andlw	7
+  1083  007F40  6E01               	movwf	constructTransaction1@uab,c
+  1084  007F42  0E10               	movlw	16
+  1085  007F44  EC8F  F03E         	call	_constructTransaction1
+  1086  007F48  C001  F014         	movff	?_constructTransaction1,D_ADC_ReadRegister@transaction
+  1087  007F4C  C002  F015         	movff	?_constructTransaction1+1,D_ADC_ReadRegister@transaction+1
+  1088                           
+  1089                           ;ADC_Driver.c: 103: transaction.transaction2 = constructTransaction2(data, 0x01, 0x00, (
+      +                          addr & 0x0F));
+  1090  007F50  0E01               	movlw	1
+  1091  007F52  6E08               	movwf	constructTransaction2@rwb,c
+  1092  007F54  0E00               	movlw	0
+  1093  007F56  6E09               	movwf	constructTransaction2@sz,c
+  1094  007F58  5013               	movf	D_ADC_ReadRegister@addr,w,c
+  1095  007F5A  0B0F               	andlw	15
+  1096  007F5C  6E0A               	movwf	constructTransaction2@lra,c
+  1097  007F5E  5012               	movf	D_ADC_ReadRegister@data,w,c
+  1098  007F60  EC00  F03F         	call	_constructTransaction2
+  1099  007F64  C008  F016         	movff	?_constructTransaction2,D_ADC_ReadRegister@transaction+2
+  1100  007F68  C009  F017         	movff	?_constructTransaction2+1,D_ADC_ReadRegister@transaction+3
+  1101  007F6C  C00A  F018         	movff	?_constructTransaction2+2,D_ADC_ReadRegister@transaction+4
+  1102  007F70  C00B  F019         	movff	?_constructTransaction2+3,D_ADC_ReadRegister@transaction+5
+  1103                           
+  1104                           ;ADC_Driver.c: 104: return writeTransaction(transaction);
+  1105  007F74  EE20  F014         	lfsr	2,D_ADC_ReadRegister@transaction
+  1106  007F78  EE00  F00B         	lfsr	0,writeTransaction@t
+  1107  007F7C  0E05               	movlw	5
+  1108  007F7E                     u141:
+  1109  007F7E  CFDB FFEB          	movff	plusw2,plusw0
+  1110  007F82  06E8               	decf	wreg,f,c
+  1111  007F84  E2FC               	bc	u141
+  1112  007F86  EC32  F03F         	call	_writeTransaction	;wreg free
+  1113  007F8A  0012               	return	
+  1114  007F8C                     __end_of_D_ADC_ReadRegister:
+  1115                           	opt stack 0
+  1116                           tblptru	equ	0xFF8
+  1117                           plusw0	equ	0xFEB
+  1118                           wreg	equ	0xFE8
+  1119                           plusw2	equ	0xFDB
+  1120                           status	equ	0xFD8
+  1121                           
+  1122 ;; *************** function _writeTransaction *****************
+  1123 ;; Defined at:
+  1124 ;;		line 65 in file "Drivers/ADC_Driver.c"
+  1125 ;; Parameters:    Size  Location     Type
+  1126 ;;  t               6   10[COMRAM] struct .
+  1127 ;; Auto vars:     Size  Location     Type
+  1128 ;;  input           1   16[COMRAM] unsigned char 
+  1129 ;; Return value:  Size  Location     Type
+  1130 ;;                  1    wreg      unsigned char 
+  1131 ;; Registers used:
+  1132 ;;		wreg, status,2, status,0, cstack
+  1133 ;; Tracked objects:
+  1134 ;;		On entry : 0/0
+  1135 ;;		On exit  : 0/0
+  1136 ;;		Unchanged: 0/0
+  1137 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1138 ;;      Params:         6       0       0       0       0       0       0       0       0
+  1139 ;;      Locals:         1       0       0       0       0       0       0       0       0
+  1140 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1141 ;;      Totals:         7       0       0       0       0       0       0       0       0
+  1142 ;;Total ram usage:        7 bytes
+  1143 ;; Hardware stack levels used:    1
+  1144 ;; Hardware stack levels required when called:    1
+  1145 ;; This function calls:
+  1146 ;;		_D_SPI_Write
+  1147 ;;		_inst2ToByte
+  1148 ;; This function is called by:
+  1149 ;;		_D_ADC_ReadRegister
+  1150 ;;		_D_ADC_WriteRegister
+  1151 ;; This function uses a non-reentrant model
+  1152 ;;
+  1153                           
+  1154                           	psect	text11
+  1155  007E64                     __ptext11:
+  1156                           	opt stack 0
+  1157  007E64                     _writeTransaction:
+  1158                           	opt stack 28
+  1159                           
+  1160                           ;ADC_Driver.c: 66: uint8_t input = 0;
+  1161                           
+  1162                           ;incstack = 0
+  1163  007E64  0E00               	movlw	0
+  1164  007E66  6E11               	movwf	writeTransaction@input,c
+  1165                           
+  1166                           ;ADC_Driver.c: 68: PORTBbits.RB2 = 0;
+  1167  007E68  9481               	bcf	3969,2,c	;volatile
+  1168                           
+  1169                           ;ADC_Driver.c: 69: D_SPI_Write(t.transaction1.INST1);
+  1170  007E6A  500B               	movf	writeTransaction@t,w,c
+  1171  007E6C  EC87  F03E         	call	_D_SPI_Write
+  1172                           
+  1173                           ;ADC_Driver.c: 70: D_SPI_Write(t.transaction1.UAB);
+  1174  007E70  500C               	movf	writeTransaction@t+1,w,c
+  1175  007E72  EC87  F03E         	call	_D_SPI_Write
+  1176                           
+  1177                           ;ADC_Driver.c: 72: D_SPI_Write(inst2ToByte(t.transaction2.INST2));
+  1178  007E76  C00D  F001         	movff	writeTransaction@t+2,inst2ToByte@inst2
+  1179  007E7A  C00E  F002         	movff	writeTransaction@t+3,inst2ToByte@inst2+1
+  1180  007E7E  C00F  F003         	movff	writeTransaction@t+4,inst2ToByte@inst2+2
+  1181  007E82  EC4C  F03F         	call	_inst2ToByte	;wreg free
+  1182  007E86  EC87  F03E         	call	_D_SPI_Write
+  1183                           
+  1184                           ;ADC_Driver.c: 73: input = D_SPI_Write(t.transaction2.DataByte);
+  1185  007E8A  5010               	movf	writeTransaction@t+5,w,c
+  1186  007E8C  EC87  F03E         	call	_D_SPI_Write
+  1187  007E90  6E11               	movwf	writeTransaction@input,c
+  1188                           
+  1189                           ;ADC_Driver.c: 74: PORTBbits.RB2 = 1;
+  1190  007E92  8481               	bsf	3969,2,c	;volatile
+  1191                           
+  1192                           ;ADC_Driver.c: 76: return input;
+  1193  007E94  5011               	movf	writeTransaction@input,w,c
+  1194  007E96  0012               	return	
+  1195  007E98                     __end_of_writeTransaction:
+  1196                           	opt stack 0
+  1197                           tblptru	equ	0xFF8
+  1198                           plusw0	equ	0xFEB
+  1199                           wreg	equ	0xFE8
+  1200                           plusw2	equ	0xFDB
+  1201                           status	equ	0xFD8
+  1202                           
+  1203 ;; *************** function _inst2ToByte *****************
+  1204 ;; Defined at:
+  1205 ;;		line 35 in file "Drivers/ADC_Driver.c"
+  1206 ;; Parameters:    Size  Location     Type
+  1207 ;;  inst2           3    0[COMRAM] struct .
+  1208 ;; Auto vars:     Size  Location     Type
+  1209 ;;  c               1    9[COMRAM] unsigned char 
+  1210 ;;  b               1    8[COMRAM] unsigned char 
+  1211 ;;  a               1    7[COMRAM] unsigned char 
+  1212 ;;  d               1    6[COMRAM] unsigned char 
+  1213 ;; Return value:  Size  Location     Type
+  1214 ;;                  1    wreg      unsigned char 
+  1215 ;; Registers used:
+  1216 ;;		wreg, status,2, status,0
+  1217 ;; Tracked objects:
+  1218 ;;		On entry : 0/0
+  1219 ;;		On exit  : 0/0
+  1220 ;;		Unchanged: 0/0
+  1221 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1222 ;;      Params:         3       0       0       0       0       0       0       0       0
+  1223 ;;      Locals:         4       0       0       0       0       0       0       0       0
+  1224 ;;      Temps:          3       0       0       0       0       0       0       0       0
+  1225 ;;      Totals:        10       0       0       0       0       0       0       0       0
+  1226 ;;Total ram usage:       10 bytes
+  1227 ;; Hardware stack levels used:    1
+  1228 ;; This function calls:
+  1229 ;;		Nothing
+  1230 ;; This function is called by:
+  1231 ;;		_writeTransaction
+  1232 ;; This function uses a non-reentrant model
+  1233 ;;
+  1234                           
+  1235                           	psect	text12
+  1236  007E98                     __ptext12:
+  1237                           	opt stack 0
+  1238  007E98                     _inst2ToByte:
+  1239                           	opt stack 28
+  1240                           
+  1241                           ;ADC_Driver.c: 36: uint8_t a = ((inst2.R_WB << 7) & 0x80);
+  1242                           
+  1243                           ;incstack = 0
+  1244  007E98  4001               	rrncf	inst2ToByte@inst2,w,c
+  1245  007E9A  0B80               	andlw	128
+  1246  007E9C  0B80               	andlw	128
+  1247  007E9E  6E08               	movwf	inst2ToByte@a,c
+  1248                           
+  1249                           ;ADC_Driver.c: 37: uint8_t b = ((inst2.SZ << 5) & 0x60);
+  1250  007EA0  3802               	swapf	inst2ToByte@inst2+1,w,c
+  1251  007EA2  46E8               	rlncf	wreg,f,c
+  1252  007EA4  0BE0               	andlw	224
+  1253  007EA6  0B60               	andlw	96
+  1254  007EA8  6E09               	movwf	inst2ToByte@b,c
+  1255                           
+  1256                           ;ADC_Driver.c: 38: uint8_t c = ((inst2.LRA) & 0x0F);
+  1257  007EAA  5003               	movf	inst2ToByte@inst2+2,w,c
+  1258  007EAC  0B0F               	andlw	15
+  1259  007EAE  6E0A               	movwf	inst2ToByte@c,c
+  1260                           
+  1261                           ;ADC_Driver.c: 39: uint8_t d = a + b + c;
+  1262  007EB0  5008               	movf	inst2ToByte@a,w,c
+  1263  007EB2  2409               	addwf	inst2ToByte@b,w,c
+  1264  007EB4  240A               	addwf	inst2ToByte@c,w,c
+  1265  007EB6  6E07               	movwf	inst2ToByte@d,c
+  1266                           
+  1267                           ;ADC_Driver.c: 40: return ((inst2.R_WB << 7) & 0x80) + ((inst2.SZ << 5) & 0x60) + ((inst
+      +                          2.LRA) & 0x0F);
+  1268  007EB8  C003  F004         	movff	inst2ToByte@inst2+2,??_inst2ToByte
+  1269  007EBC  0E0F               	movlw	15
+  1270  007EBE  1604               	andwf	??_inst2ToByte,f,c
+  1271  007EC0  C002  F005         	movff	inst2ToByte@inst2+1,??_inst2ToByte+1
+  1272  007EC4  0E05               	movlw	5
+  1273  007EC6  6E06               	movwf	(??_inst2ToByte+2)& (0+255),c
+  1274  007EC8                     u135:
+  1275  007EC8  90D8               	bcf	status,0,c
+  1276  007ECA  3605               	rlcf	??_inst2ToByte+1,f,c
+  1277  007ECC  2E06               	decfsz	(??_inst2ToByte+2)& (0+255),f,c
+  1278  007ECE  D7FC               	goto	u135
+  1279  007ED0  0E60               	movlw	96
+  1280  007ED2  1605               	andwf	??_inst2ToByte+1,f,c
+  1281  007ED4  4001               	rrncf	inst2ToByte@inst2,w,c
+  1282  007ED6  0B80               	andlw	128
+  1283  007ED8  0B80               	andlw	128
+  1284  007EDA  2405               	addwf	??_inst2ToByte+1,w,c
+  1285  007EDC  2404               	addwf	??_inst2ToByte,w,c
+  1286  007EDE  0012               	return	
+  1287  007EE0                     __end_of_inst2ToByte:
+  1288                           	opt stack 0
+  1289                           tblptru	equ	0xFF8
+  1290                           plusw0	equ	0xFEB
+  1291                           wreg	equ	0xFE8
+  1292                           plusw2	equ	0xFDB
+  1293                           status	equ	0xFD8
+  1294                           
+  1295 ;; *************** function _D_SPI_Write *****************
+  1296 ;; Defined at:
+  1297 ;;		line 83 in file "Drivers/SPI_Driver.c"
+  1298 ;; Parameters:    Size  Location     Type
+  1299 ;;  data            1    wreg     unsigned char 
+  1300 ;; Auto vars:     Size  Location     Type
+  1301 ;;  data            1    0[COMRAM] unsigned char 
+  1302 ;; Return value:  Size  Location     Type
+  1303 ;;                  1    wreg      unsigned char 
+  1304 ;; Registers used:
+  1305 ;;		wreg, status,2
+  1306 ;; Tracked objects:
+  1307 ;;		On entry : 0/0
+  1308 ;;		On exit  : 0/0
+  1309 ;;		Unchanged: 0/0
+  1310 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1311 ;;      Params:         0       0       0       0       0       0       0       0       0
+  1312 ;;      Locals:         1       0       0       0       0       0       0       0       0
+  1313 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1314 ;;      Totals:         1       0       0       0       0       0       0       0       0
+  1315 ;;Total ram usage:        1 bytes
+  1316 ;; Hardware stack levels used:    1
+  1317 ;; This function calls:
+  1318 ;;		Nothing
+  1319 ;; This function is called by:
+  1320 ;;		_writeTransaction
+  1321 ;; This function uses a non-reentrant model
+  1322 ;;
+  1323                           
+  1324                           	psect	text13
+  1325  007D0E                     __ptext13:
+  1326                           	opt stack 0
+  1327  007D0E                     _D_SPI_Write:
+  1328                           	opt stack 28
+  1329                           
+  1330                           ;incstack = 0
+  1331                           ;D_SPI_Write@data stored from wreg
+  1332  007D0E  6E01               	movwf	D_SPI_Write@data,c
+  1333                           
+  1334                           ;SPI_Driver.c: 84: SSPBUF = data;
+  1335  007D10  C001  FFC9         	movff	D_SPI_Write@data,4041	;volatile
+  1336  007D14                     l29:
+  1337  007D14  A69E               	btfss	3998,3,c	;volatile
+  1338  007D16  D7FE               	goto	l29
+  1339                           
+  1340                           ;SPI_Driver.c: 86: PIR1bits.SSPIF = 0;
+  1341  007D18  969E               	bcf	3998,3,c	;volatile
+  1342                           
+  1343                           ;SPI_Driver.c: 87: return SSPBUF;
+  1344  007D1A  50C9               	movf	4041,w,c	;volatile
+  1345  007D1C  0012               	return		;funcret
+  1346  007D1E                     __end_of_D_SPI_Write:
+  1347                           	opt stack 0
+  1348                           tblptru	equ	0xFF8
+  1349                           plusw0	equ	0xFEB
+  1350                           wreg	equ	0xFE8
+  1351                           plusw2	equ	0xFDB
+  1352                           status	equ	0xFD8
+  1353                           
+  1354 ;; *************** function _constructTransaction2 *****************
+  1355 ;; Defined at:
+  1356 ;;		line 58 in file "Drivers/ADC_Driver.c"
+  1357 ;; Parameters:    Size  Location     Type
+  1358 ;;  db              1    wreg     unsigned char 
+  1359 ;;  rwb             1    7[COMRAM] unsigned char 
+  1360 ;;  sz              1    8[COMRAM] unsigned char 
+  1361 ;;  lra             1    9[COMRAM] unsigned char 
+  1362 ;; Auto vars:     Size  Location     Type
+  1363 ;;  db              1   11[COMRAM] unsigned char 
+  1364 ;;  transaction2    4   12[COMRAM] struct .
+  1365 ;; Return value:  Size  Location     Type
+  1366 ;;                  4    7[COMRAM] struct .
+  1367 ;; Registers used:
+  1368 ;;		wreg, status,2, cstack
+  1369 ;; Tracked objects:
+  1370 ;;		On entry : 0/0
+  1371 ;;		On exit  : 0/0
+  1372 ;;		Unchanged: 0/0
+  1373 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1374 ;;      Params:         4       0       0       0       0       0       0       0       0
+  1375 ;;      Locals:         5       0       0       0       0       0       0       0       0
+  1376 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1377 ;;      Totals:         9       0       0       0       0       0       0       0       0
+  1378 ;;Total ram usage:        9 bytes
+  1379 ;; Hardware stack levels used:    1
+  1380 ;; Hardware stack levels required when called:    1
+  1381 ;; This function calls:
+  1382 ;;		_contructInstruction2Byte
+  1383 ;; This function is called by:
+  1384 ;;		_D_ADC_ReadRegister
+  1385 ;;		_D_ADC_WriteRegister
+  1386 ;; This function uses a non-reentrant model
+  1387 ;;
+  1388                           
+  1389                           	psect	text14
+  1390  007E00                     __ptext14:
+  1391                           	opt stack 0
+  1392  007E00                     _constructTransaction2:
+  1393                           	opt stack 28
+  1394                           
+  1395                           ;incstack = 0
+  1396                           ;constructTransaction2@db stored from wreg
+  1397  007E00  6E0C               	movwf	constructTransaction2@db,c
+  1398                           
+  1399                           ;ADC_Driver.c: 59: transaction2_t transaction2;
+  1400                           ;ADC_Driver.c: 60: transaction2.INST2 = contructInstruction2Byte(rwb, sz, lra);
+  1401  007E02  C009  F001         	movff	constructTransaction2@sz,contructInstruction2Byte@sz
+  1402  007E06  C00A  F002         	movff	constructTransaction2@lra,contructInstruction2Byte@lra
+  1403  007E0A  5008               	movf	constructTransaction2@rwb,w,c
+  1404  007E0C  ECCA  F03E         	call	_contructInstruction2Byte
+  1405  007E10  C001  F00D         	movff	?_contructInstruction2Byte,constructTransaction2@transaction2
+  1406  007E14  C002  F00E         	movff	?_contructInstruction2Byte+1,constructTransaction2@transaction2+1
+  1407  007E18  C003  F00F         	movff	?_contructInstruction2Byte+2,constructTransaction2@transaction2+2
+  1408                           
+  1409                           ;ADC_Driver.c: 61: transaction2.DataByte = db;
+  1410  007E1C  C00C  F010         	movff	constructTransaction2@db,constructTransaction2@transaction2+3
+  1411                           
+  1412                           ;ADC_Driver.c: 62: return transaction2;
+  1413  007E20  C00D  F008         	movff	constructTransaction2@transaction2,?_constructTransaction2
+  1414  007E24  C00E  F009         	movff	constructTransaction2@transaction2+1,?_constructTransaction2+1
+  1415  007E28  C00F  F00A         	movff	constructTransaction2@transaction2+2,?_constructTransaction2+2
+  1416  007E2C  C010  F00B         	movff	constructTransaction2@transaction2+3,?_constructTransaction2+3
+  1417  007E30  0012               	return	
+  1418  007E32                     __end_of_constructTransaction2:
+  1419                           	opt stack 0
+  1420                           tblptru	equ	0xFF8
+  1421                           plusw0	equ	0xFEB
+  1422                           wreg	equ	0xFE8
+  1423                           plusw2	equ	0xFDB
+  1424                           status	equ	0xFD8
+  1425                           
+  1426 ;; *************** function _contructInstruction2Byte *****************
+  1427 ;; Defined at:
+  1428 ;;		line 43 in file "Drivers/ADC_Driver.c"
+  1429 ;; Parameters:    Size  Location     Type
+  1430 ;;  rwb             1    wreg     unsigned char 
+  1431 ;;  sz              1    0[COMRAM] unsigned char 
+  1432 ;;  lra             1    1[COMRAM] unsigned char 
+  1433 ;; Auto vars:     Size  Location     Type
+  1434 ;;  rwb             1    3[COMRAM] unsigned char 
+  1435 ;;  inst2           3    4[COMRAM] struct .
+  1436 ;; Return value:  Size  Location     Type
+  1437 ;;                  3    0[COMRAM] struct .
+  1438 ;; Registers used:
+  1439 ;;		wreg
+  1440 ;; Tracked objects:
+  1441 ;;		On entry : 0/0
+  1442 ;;		On exit  : 0/0
+  1443 ;;		Unchanged: 0/0
+  1444 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1445 ;;      Params:         3       0       0       0       0       0       0       0       0
+  1446 ;;      Locals:         4       0       0       0       0       0       0       0       0
+  1447 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1448 ;;      Totals:         7       0       0       0       0       0       0       0       0
+  1449 ;;Total ram usage:        7 bytes
+  1450 ;; Hardware stack levels used:    1
+  1451 ;; This function calls:
+  1452 ;;		Nothing
+  1453 ;; This function is called by:
+  1454 ;;		_constructTransaction2
+  1455 ;; This function uses a non-reentrant model
+  1456 ;;
+  1457                           
+  1458                           	psect	text15
+  1459  007D94                     __ptext15:
+  1460                           	opt stack 0
+  1461  007D94                     _contructInstruction2Byte:
+  1462                           	opt stack 28
+  1463                           
+  1464                           ;incstack = 0
+  1465                           ;contructInstruction2Byte@rwb stored from wreg
+  1466  007D94  6E04               	movwf	contructInstruction2Byte@rwb,c
+  1467                           
+  1468                           ;ADC_Driver.c: 44: INST2_t inst2;
+  1469                           ;ADC_Driver.c: 45: inst2.R_WB = rwb;
+  1470  007D96  C004  F005         	movff	contructInstruction2Byte@rwb,contructInstruction2Byte@inst2
+  1471                           
+  1472                           ;ADC_Driver.c: 46: inst2.SZ = sz;
+  1473  007D9A  C001  F006         	movff	contructInstruction2Byte@sz,contructInstruction2Byte@inst2+1
+  1474                           
+  1475                           ;ADC_Driver.c: 47: inst2.LRA = lra;
+  1476  007D9E  C002  F007         	movff	contructInstruction2Byte@lra,contructInstruction2Byte@inst2+2
+  1477                           
+  1478                           ;ADC_Driver.c: 48: return inst2;
+  1479  007DA2  C005  F001         	movff	contructInstruction2Byte@inst2,?_contructInstruction2Byte
+  1480  007DA6  C006  F002         	movff	contructInstruction2Byte@inst2+1,?_contructInstruction2Byte+1
+  1481  007DAA  C007  F003         	movff	contructInstruction2Byte@inst2+2,?_contructInstruction2Byte+2
+  1482  007DAE  0012               	return	
+  1483  007DB0                     __end_of_contructInstruction2Byte:
+  1484                           	opt stack 0
+  1485                           tblptru	equ	0xFF8
+  1486                           plusw0	equ	0xFEB
+  1487                           wreg	equ	0xFE8
+  1488                           plusw2	equ	0xFDB
+  1489                           status	equ	0xFD8
+  1490                           
+  1491 ;; *************** function _constructTransaction1 *****************
+  1492 ;; Defined at:
+  1493 ;;		line 51 in file "Drivers/ADC_Driver.c"
+  1494 ;; Parameters:    Size  Location     Type
+  1495 ;;  rw              1    wreg     unsigned char 
+  1496 ;;  uab             1    0[COMRAM] unsigned char 
+  1497 ;; Auto vars:     Size  Location     Type
+  1498 ;;  rw              1    2[COMRAM] unsigned char 
+  1499 ;;  transaction1    2    3[COMRAM] struct .
+  1500 ;; Return value:  Size  Location     Type
+  1501 ;;                  2    0[COMRAM] struct .
+  1502 ;; Registers used:
+  1503 ;;		wreg, status,2, status,0
+  1504 ;; Tracked objects:
+  1505 ;;		On entry : 0/0
+  1506 ;;		On exit  : 0/0
+  1507 ;;		Unchanged: 0/0
+  1508 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+  1509 ;;      Params:         2       0       0       0       0       0       0       0       0
+  1510 ;;      Locals:         3       0       0       0       0       0       0       0       0
+  1511 ;;      Temps:          0       0       0       0       0       0       0       0       0
+  1512 ;;      Totals:         5       0       0       0       0       0       0       0       0
+  1513 ;;Total ram usage:        5 bytes
+  1514 ;; Hardware stack levels used:    1
+  1515 ;; This function calls:
+  1516 ;;		Nothing
+  1517 ;; This function is called by:
+  1518 ;;		_D_ADC_ReadRegister
+  1519 ;;		_D_ADC_WriteRegister
+  1520 ;; This function uses a non-reentrant model
+  1521 ;;
+  1522                           
+  1523                           	psect	text16
+  1524  007D1E                     __ptext16:
+  1525                           	opt stack 0
+  1526  007D1E                     _constructTransaction1:
+  1527                           	opt stack 29
+  1528                           
+  1529                           ;incstack = 0
+  1530                           ;constructTransaction1@rw stored from wreg
+  1531  007D1E  6E03               	movwf	constructTransaction1@rw,c
+  1532                           
+  1533                           ;ADC_Driver.c: 52: transaction1_t transaction1;
+  1534                           ;ADC_Driver.c: 53: transaction1.INST1 = rw;
+  1535  007D20  C003  F004         	movff	constructTransaction1@rw,constructTransaction1@transaction1
+  1536                           
+  1537                           ;ADC_Driver.c: 54: transaction1.UAB = (uab & 0x07);
+  1538  007D24  5001               	movf	constructTransaction1@uab,w,c
+  1539  007D26  0B07               	andlw	7
+  1540  007D28  6E05               	movwf	constructTransaction1@transaction1+1,c
+  1541                           
+  1542                           ;ADC_Driver.c: 55: return transaction1;
+  1543  007D2A  C004  F001         	movff	constructTransaction1@transaction1,?_constructTransaction1
+  1544  007D2E  C005  F002         	movff	constructTransaction1@transaction1+1,?_constructTransaction1+1
+  1545  007D32  0012               	return	
+  1546  007D34                     __end_of_constructTransaction1:
+  1547                           	opt stack 0
+  1548  0000                     tblptru	equ	0xFF8
+  1549                           plusw0	equ	0xFEB
+  1550                           wreg	equ	0xFE8
+  1551                           plusw2	equ	0xFDB
+  1552                           status	equ	0xFD8
+  1553                           tblptru	equ	0xFF8
+  1554                           plusw0	equ	0xFEB
+  1555                           wreg	equ	0xFE8
+  1556                           plusw2	equ	0xFDB
+  1557                           status	equ	0xFD8
+  1558                           
+  1559                           	psect	rparam
+  1560  0000                     tblptru	equ	0xFF8
+  1561                           plusw0	equ	0xFEB
+  1562                           wreg	equ	0xFE8
+  1563                           plusw2	equ	0xFDB
+  1564                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     26      26
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _main->_D_ADC_ReadRegister
+    _main->_D_ADC_WriteRegister
+    _D_ADC_Init->_D_SPI_Init
+    _D_SPI_Init->_D_SPI_Enable
+    _delay1000ms->_delay100ms
+    _delay100ms->_delay10ms
+    _D_ADC_WriteRegister->_writeTransaction
+    _D_ADC_ReadRegister->_writeTransaction
+    _writeTransaction->_inst2ToByte
+    _constructTransaction2->_contructInstruction2Byte
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0    4092
+                                             25 COMRAM     1     1      0
+                 _D_ADC_ReadRegister
+                _D_ADC_WriteRegister
+                        _delay1000ms
+                         _initialize
+ ---------------------------------------------------------------------------------
+ (1) _initialize                                           0     0      0     172
+                         _D_ADC_Init
+                        _D_PORT_Init
+ ---------------------------------------------------------------------------------
+ (2) _D_PORT_Init                                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _D_ADC_Init                                           0     0      0     172
+                       _D_SPI_Enable
+                         _D_SPI_Init
+ ---------------------------------------------------------------------------------
+ (3) _D_SPI_Init                                           2     1      1     157
+                                              1 COMRAM     2     1      1
+                       _D_SPI_Enable
+ ---------------------------------------------------------------------------------
+ (4) _D_SPI_Enable                                         1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _delay1000ms                                          2     2      0      90
+                                              5 COMRAM     2     2      0
+                         _delay100ms
+ ---------------------------------------------------------------------------------
+ (2) _delay100ms                                           2     2      0      60
+                                              3 COMRAM     2     2      0
+                          _delay10ms
+ ---------------------------------------------------------------------------------
+ (3) _delay10ms                                            3     3      0      30
+                                              0 COMRAM     3     3      0
+ ---------------------------------------------------------------------------------
+ (1) _D_ADC_WriteRegister                                  8     7      1    2028
+                                             17 COMRAM     8     7      1
+              _constructTransaction1
+              _constructTransaction2
+                   _writeTransaction
+ ---------------------------------------------------------------------------------
+ (1) _D_ADC_ReadRegister                                   8     8      0    1801
+                                             17 COMRAM     8     8      0
+              _constructTransaction1
+              _constructTransaction2
+                   _writeTransaction
+ ---------------------------------------------------------------------------------
+ (2) _writeTransaction                                     7     1      6     564
+                                             10 COMRAM     7     1      6
+                        _D_SPI_Write
+                        _inst2ToByte
+ ---------------------------------------------------------------------------------
+ (3) _inst2ToByte                                         10     7      3     282
+                                              0 COMRAM    10     7      3
+ ---------------------------------------------------------------------------------
+ (3) _D_SPI_Write                                          1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (2) _constructTransaction2                                9     5      4     880
+                                              7 COMRAM     9     5      4
+           _contructInstruction2Byte
+ ---------------------------------------------------------------------------------
+ (3) _contructInstruction2Byte                             7     4      3     289
+                                              0 COMRAM     7     4      3
+ ---------------------------------------------------------------------------------
+ (2) _constructTransaction1                                5     3      2     243
+                                              0 COMRAM     5     3      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _D_ADC_ReadRegister
+     _constructTransaction1
+     _constructTransaction2
+       _contructInstruction2Byte
+     _writeTransaction
+       _D_SPI_Write
+       _inst2ToByte
+   _D_ADC_WriteRegister
+     _constructTransaction1
+     _constructTransaction2
+       _contructInstruction2Byte
+     _writeTransaction
+       _D_SPI_Write
+       _inst2ToByte
+   _delay1000ms
+     _delay100ms
+       _delay10ms
+   _initialize
+     _D_ADC_Init
+       _D_SPI_Enable
+       _D_SPI_Init
+         _D_SPI_Enable
+     _D_PORT_Init
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F     1A      1A       1       27.4%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.40 build -251452761 
+Symbol Table                                                                                   Fri Dec 30 23:13:03 2016
+
+                 _writeTransaction 7E64                        _SSPSTATbits 000FC7  
+                               l20 7FAE                                 l21 7FB6  
+                               l22 7FBC                                 l23 7FC4  
+                               l18 7FA8                                 l29 7D14  
+                               l38 7D46                        ?_D_ADC_Init 0001  
+                      __CFG_BOR$ON 000000                        __CFG_BORV$3 000000  
+                     __CFG_CP0$OFF 000000                       __CFG_CP1$OFF 000000  
+                     __CFG_CP2$OFF 000000                       __CFG_CP3$OFF 000000  
+                              l132 7E62                                l801 7DB8  
+                              l805 7DC8                                l923 7FCA  
+                              l925 7FE6                                l871 7D70  
+                              l929 7FF4                                l867 7D68  
+                              l893 7D8A                                l889 7D82  
+                     __CFG_CPB$OFF 000000                                u115 7F96  
+                              u116 7F98                                u141 7F7E  
+                              u135 7EC8                                u151 7F26  
+                              u167 7DBE                       __CFG_CPD$OFF 000000  
+                              wreg 000FE8                       __CFG_FOSC$HS 000000  
+                     __CFG_LVP$OFF 000000                       __CFG_WDT$OFF 000000  
+                             _main 7E32                               start 0000  
+                    __CFG_IESO$OFF 000000                      __CFG_MCLRE$ON 000000  
+                      ?_D_SPI_Init 0002         ??_contructInstruction2Byte 0004  
+                     ___param_bank 000000                       ?_inst2ToByte 0001  
+                    __CFG_PLLDIV$5 000000               __size_of_delay1000ms 001A  
+                            ?_main 0001                              _PORTA 000F80  
+                            _PORTB 000F81                              _PORTC 000F82  
+                    __CFG_USBDIV$1 000000                              _TRISA 000F92  
+                            _TRISB 000F93                              _TRISC 000F94  
+                    __CFG_PWRT$OFF 000000                      __CFG_WRT0$OFF 000000  
+                    __CFG_WRT1$OFF 000000                      __CFG_WRT2$OFF 000000  
+                    __CFG_WRT3$OFF 000000                     __CFG_EBTR0$OFF 000000  
+                   __CFG_FCMEN$OFF 000000                     __CFG_EBTR1$OFF 000000  
+                   __CFG_EBTR2$OFF 000000                     __CFG_EBTR3$OFF 000000  
+                    __CFG_WRTB$OFF 000000                      __CFG_WRTC$OFF 000000  
+                    __CFG_WRTD$OFF 000000                     __CFG_EBTRB$OFF 000000  
+                            main@a 001A                              plusw0 000FEB  
+                            plusw2 000FDB                __size_of_D_ADC_Init 0016  
+                            status 000FD8                 D_SPI_Enable@enable 0001  
+                     ?_D_PORT_Init 0001           constructTransaction1@uab 0001  
+         constructTransaction2@lra 000A           constructTransaction2@rwb 0008  
+                  __initialization 7D04                       ?_D_SPI_Write 0001  
+                     __end_of_main 7E64                             ??_main 001A  
+                    __activetblptr 000002                    __CFG_CCP2MX$OFF 000000  
+              __size_of_D_SPI_Init 0074                             _ADCON1 000FC1  
+                           _SSPBUF 000FC9                 _D_ADC_ReadRegister 7F34  
+                   __CFG_XINST$OFF 000000                ?_D_ADC_ReadRegister 0001  
+     __size_of_D_ADC_WriteRegister 0054                             tblptru 000FF8  
+             ??_D_ADC_ReadRegister 0012           __end_of_writeTransaction 7E98  
+            _constructTransaction1 7D1E              _constructTransaction2 7E00  
+                       __accesstop 0060            __end_of__initialization 7D04  
+                  __CFG_PBADEN$OFF 000000                      ___rparam_used 000001  
+                    ?_D_SPI_Enable 0001   __end_of_contructInstruction2Byte 7DB0  
+                   __pcstackCOMRAM 0001                 __size_of_delay10ms 0022  
+                     ??_D_ADC_Init 0004               __size_of_inst2ToByte 0048  
+                       _delay100ms 7D60                 __end_of_D_ADC_Init 7D60  
+                   ??_D_SPI_Enable 0001                       ??_D_SPI_Init 0003  
+             __size_of_D_PORT_Init 002E               __size_of_D_SPI_Write 0010  
+                writeTransaction@t 000B                       inst2ToByte@a 0008  
+                     inst2ToByte@b 0009                       inst2ToByte@c 000A  
+                     inst2ToByte@d 0007             D_ADC_ReadRegister@addr 0013  
+           D_ADC_ReadRegister@data 0012                 __end_of_D_SPI_Init 8000  
+                __end_of_delay10ms 7DD2             ?_constructTransaction1 0001  
+           ?_constructTransaction2 0008                    __CFG_VREGEN$OFF 000000  
+                          __Hparam 0000                            __Lparam 0000  
+                       delay10ms@d 0002                         delay10ms@i 0003  
+                    ??_delay1000ms 0006                     D_SPI_Init@mode 0002  
+                  __CFG_STVREN$OFF 000000                            __pcinit 7D04  
+                          __ramtop 0800                         _initialize 7CFA  
+                          __ptext0 7E32                            __ptext1 7CFA  
+                          __ptext2 7DD2                            __ptext3 7D4A  
+                          __ptext4 7F8C                            __ptext5 7D34  
+                          __ptext6 7D7A                            __ptext7 7D60  
+                          __ptext8 7DB0                            __ptext9 7EE0  
+__size_of_contructInstruction2Byte 001C          ?_contructInstruction2Byte 0001  
+                      ?_delay100ms 0001               end_of_initialization 7D04  
+                    __Lmediumconst 0000            D_ADC_WriteRegister@addr 0013  
+          D_ADC_WriteRegister@data 0012                _D_ADC_WriteRegister 7EE0  
+                        _PORTBbits 000F81                __end_of_delay1000ms 7D94  
+             __end_of_D_SPI_Enable 7D4A               ?_D_ADC_WriteRegister 0012  
+                        _TRISBbits 000F93                          _TRISCbits 000F94  
+                ?_writeTransaction 000B                 ??_writeTransaction 0011  
+              __size_of_delay100ms 001A                        ?_initialize 0001  
+            ??_D_ADC_WriteRegister 0013                start_initialization 7D04  
+          constructTransaction2@db 000C            constructTransaction1@rw 0003  
+          constructTransaction2@sz 0009                       delay1000ms@d 0006  
+                     delay1000ms@i 0007        __size_of_D_ADC_ReadRegister 0058  
+            writeTransaction@input 0011                       D_SPI_Init@MS 0003  
+                    ??_inst2ToByte 0004      D_ADC_ReadRegister@transaction 0014  
+                      _delay1000ms 7D7A                   __CFG_LPT1OSC$OFF 000000  
+          ??_constructTransaction1 0003            ??_constructTransaction2 000C  
+                    ??_D_PORT_Init 0001                __size_of_initialize 000A  
+                        _delay10ms 7DB0                      ??_D_SPI_Write 0001  
+            __size_of_D_SPI_Enable 0016        contructInstruction2Byte@lra 0002  
+      contructInstruction2Byte@rwb 0004                __end_of_inst2ToByte 7EE0  
+                     ??_delay100ms 0004                           _LATBbits 000F8A  
+                       ?_delay10ms 0001  constructTransaction1@transaction1 0004  
+                     _D_SPI_Enable 7D34                           _PIR1bits 000F9E  
+                 __CFG_WDTPS$32768 000000                __end_of_D_PORT_Init 7E00  
+               __end_of_delay100ms 7D7A                __end_of_D_SPI_Write 7D1E  
+                      delay100ms@d 0004                        delay100ms@i 0005  
+                         __Hrparam 0000                           __Lrparam 0000  
+                      _inst2ToByte 7E98          __size_of_writeTransaction 0034  
+                 inst2ToByte@inst2 0001                       ??_initialize 0004  
+         _contructInstruction2Byte 7D94                           __ptext10 7F34  
+                         __ptext11 7E64                           __ptext12 7E98  
+                         __ptext13 7D0E                           __ptext14 7E00  
+                         __ptext15 7D94                           __ptext16 7D1E  
+       contructInstruction2Byte@sz 0001                      __size_of_main 0032  
+                      ??_delay10ms 0001                        _D_PORT_Init 7DD2  
+               __end_of_initialize 7D04  constructTransaction2@transaction2 000D  
+                      _D_SPI_Write 7D0E                       ?_delay1000ms 0001  
+                       _D_ADC_Init 7D4A        __end_of_D_ADC_WriteRegister 7F34  
+            __CFG_CPUDIV$OSC1_PLL2 000000         __end_of_D_ADC_ReadRegister 7F8C  
+   __size_of_constructTransaction1 0016     __size_of_constructTransaction2 0032  
+    __end_of_constructTransaction1 7D34      __end_of_constructTransaction2 7E32  
+    contructInstruction2Byte@inst2 0005                         _D_SPI_Init 7F8C  
+   D_ADC_WriteRegister@transaction 0014                    D_SPI_Write@data 0001  
+                      _SSPCON1bits 000FC6  
