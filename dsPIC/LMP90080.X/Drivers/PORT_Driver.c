@@ -101,3 +101,8 @@ void D_PORT_SetUartPorts(uint16_t which) {
         return;
     }
 }
+
+void D_PORT_SetLmpInterruptPort(void) {
+    DRDYB_Dir = 1; // Input for interrupts
+    RPINR0bits.INT1R = RP36; // RP36 (RB4) tied to INT1 interrupt pin
+}

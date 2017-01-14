@@ -5,8 +5,10 @@
 
 #include "SYSTEM_Driver.h"
 #include "INT_Driver.h"
-
+#include "PORT_Driver.h"
 #include "UART_Driver.h"
+
+#include "../Controllers/LMP_Controller.h"
 
 /*******************************************************************************
  *          DEFINES
@@ -53,6 +55,16 @@ void D_INT_EnableUartInterrupts(bool enable) {
     }
 }
 
+void D_INT_EnableDRDYBInterrupts(bool enable) {
+    if (enable) {
+        _INT1IF = 0; // Clear flag
+        _INT1IP = INT1_IP; // Priority
+        _INT1IE = 1; // Enable interrupts
+    } else {
+        _INT1IE = 0; // Disable interrupts
+    }
+}
+
 /*******************************************************************************
  *          INTERRUPTS
  ******************************************************************************/
@@ -63,6 +75,15 @@ void __attribute__ ( (interrupt, no_auto_psv) ) _U1RXInterrupt(void) {
         //C_UART_FillDataBuffer(D_UART_ReadByte());
         //C_UART_AppendMessage(D_UART_ReadByte());
         _U1RXIF = 0; // Clear interrupt
+    }
+}
+
+void __attribute__ ( (interrupt, no_auto_psv) ) _INT1Interrupt(void) {
+    if (_INT1IF) {
+        
+        AdcDataReadyFlag = true;
+        
+        _INT1IF = 0; // Clear interrupt
     }
 }
 

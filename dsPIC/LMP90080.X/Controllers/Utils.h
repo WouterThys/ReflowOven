@@ -20,6 +20,13 @@ extern "C" {
      * @return 
      */
     bool StringEquals(const char* str1, const char* str2);
+    
+    /**
+     * A timed while loop, which is 
+     * @param time
+     * @return 
+     */
+    bool TimedWhile(uint16_t time);
 
 
 #ifdef	__cplusplus

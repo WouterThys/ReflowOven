@@ -15,6 +15,8 @@ extern "C" {
 #define LED1_Dir        TRISBbits.TRISB15
 #define LED2            PORTBbits.RB14
 #define LED2_Dir        TRISBbits.TRISB14
+#define LED3            PORTBbits.RB13
+#define LED3_Dir        TRISBbits.TRISB13
     
 // SPI    
 #define SPI1_SCK_Dir    TRISBbits.TRISB7
@@ -32,6 +34,9 @@ extern "C" {
 #define LMP_CSB         PORTBbits.RB10
 #define LMP_CSB_Dir     TRISBbits.TRISB10
     
+#define RP36            0b100100
+#define DRDYB_Dir       TRISBbits.TRISB4
+    
 /******************************************************************************/
 /* System Function Prototypes                                                 */
 /******************************************************************************/
@@ -48,6 +53,11 @@ void D_PORT_SetSpiPorts(uint16_t which, uint16_t MS);
  * @param which: UART_MODULE_1 or UART_MODULE_2
  */
 void D_PORT_SetUartPorts(uint16_t which);
+
+/**
+ * Set the LMP input port for the interrupt when ADC data is ready;
+ */
+void D_PORT_SetLmpInterruptPort(void);
 
 
 #endif

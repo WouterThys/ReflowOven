@@ -36,6 +36,7 @@
  *          LOCAL FUNCTIONS
  ******************************************************************************/
 static void initialize();
+double calculate_average(double avg, double new_sample, uint16_t samples);
 
 void initialize() {
     // Disable interrupts before startup
@@ -60,6 +61,12 @@ void initialize() {
     
 }
 
+double calculate_average(double avg, double new_sample, uint16_t samples) {
+    avg -= avg / samples;
+    avg += new_sample / samples;
+    return avg;
+}
+
 /*******************************************************************************
  *          VARIABLES
  ******************************************************************************/
@@ -75,11 +82,26 @@ int main(void) {
     // Test
     printf("ini \n");
     
+    uint16_t samples = 16;
+    uint16_t buffer[samples];
+    double av;
+    
     //if (C_LMP_Test_SimpleRW(SPI_DRDYBCN, 0x83)) LED1 = 1;
-    if(C_LMP_Test_NormalStreamRW()) LED1 = 1;
+    //if(C_LMP_Test_NormalStreamRW()) LED1 = 1;
     
     while(1) {
+        if(C_LMP_Test_NormalStreamReadADC(buffer, samples)) LED1 = 1;
+    
+        uint16_t i;
+        for (i=0; i<samples; i++) {
+            av = calculate_average(av, buffer[i], samples);
+        }
+
+        printf("%f \n", av);
         
+        DelayMs(1000);
     }
     return 0;
 }
+
+

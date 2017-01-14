@@ -5,6 +5,7 @@
 #include <xc.h>
 
 #include "LMP_Controller.h"
+#include "../Drivers/INT_Driver.h"
 #include "../Drivers/PORT_Driver.h"
 #include "../Drivers/LMP90080.h"
 #include "../Drivers/SYSTEM_Driver.h"
@@ -24,6 +25,7 @@
  ******************************************************************************/
 static bool ledState;
 static bool inReadOnlyState; 
+bool AdcDataReadyFlag;
 
 /*******************************************************************************
  *          BASIC FUNCTIONS
@@ -32,23 +34,39 @@ static void configureLmp(void);
 
 void configureLmp() {
     
-//    // Reset
-//    D_LMP_WriteRegister(RESETCN, REG_AND_CNV_RST);
-//    
-//    // Disable data first mode
-//    uint8_t buffer[1];
-//    if (!D_LMP_DisableDataFirstMode(buffer, 0)) {
-//        D_LMP_DisableDataFirstMode(buffer, 0);
-//    } else {
-//        inReadOnlyState = false;
-//    }
-//    
-//    // SPI
-//    D_LMP_WriteRegister(SPI_HANDSHAKECN, 0x80); // SDO_DRDYB_DRIVER = 0x4, SW_OFF_TRG = 0
-//    D_LMP_WriteRegister(SPI_DRDYBCN, 0x83); // D6 = DRDYB signal, CRC_RST = 0, FGA_BGCAL = 0
-//    
-//    // Auxiliary control
-//    D_LMP_WriteRegister(ADC_AUXCN, 0x20); // "External-Clock Detection" is bypassed, rest is default
+    D_LMP_WriteRegister(RESETCN, 0xC3); // Register and Conversion reset
+    D_LMP_WriteRegister(SPI_HANDSHAKECN, 0x01); // SPI SDO High Z Delayed
+    D_LMP_WriteRegister(SPI_STREAMCN, 0x00); // SPI Normal Streaming mode
+    D_LMP_WriteRegister(PWRCN, 0x00); // Active mode
+    D_LMP_WriteRegister(ADC_RESTART, 0x00); // Disable restart conversion
+    D_LMP_WriteRegister(GPIO_DIRCN, 0x40); // D6 output, D0-D5 inputs
+    D_LMP_WriteRegister(GPIO_DAT, 0x40); // Set D6 high, ignore others
+    D_LMP_WriteRegister(BGCALCN, 0x00); // Background calibration off
+    D_LMP_WriteRegister(SPI_DRDYBCN, 0x83); // Enable DRDYB on D6, bits 0 & 1 must be 1, others default
+    D_LMP_WriteRegister(ADC_AUXCN, 0x2A); // Bypass external clock detection, internal clock, select 1000 µA RTD current
+    D_LMP_WriteRegister(SPI_CRC_CN, 0x00); // Disable CRC, Bit 3 most be 0, DRDYB is de-asserted after ADC_DOUTL is read
+    D_LMP_WriteRegister(SENDIAG_THLD, 0x00); // Sensor diagnostics threshold low
+    D_LMP_WriteRegister(SCALCN, 0x00); // System calibration normal mode
+    D_LMP_WriteRegister(ADC_DONE, 0xFF); // ADC Data unavailable
+    
+    while(D_LMP_ReadRegister(CH_STS & CH_SCAN_NRDY)); // Wait while channel scan not ready
+    
+    D_LMP_WriteRegister(CH_SCAN, 0x00); // Single channel Continuous scan: channel 0
+    D_LMP_WriteRegister(CH0_INPUTCN, 0x41); // Disable sensor diagnostics, VREFP2 & VREFN2, Vinp0 and Vinn1
+    D_LMP_WriteRegister(CH0_CONFIG, 0x40); // Channel 0 configuration: 26.83SPS, FGA off, buffer in signal path
+    D_LMP_WriteRegister(CH1_INPUTCN, 0x13); // Disable sensor diagnostics, default ref, Vinp2 and Vinn3
+    D_LMP_WriteRegister(CH1_CONFIG, 0x40); // Channel 1 configuration: 26.83SPS, FGA off, buffer in signal path
+    D_LMP_WriteRegister(CH2_INPUTCN, 0x25); // Disable sensor diagnostics, default ref, Vinp4 and Vinn5
+    D_LMP_WriteRegister(CH2_CONFIG, 0x70); // Channel 2 configuration: 214.655SPS, FGA off, buffer in signal path
+    D_LMP_WriteRegister(CH3_INPUTCN, 0x37); // Disable sensor diagnostics, default ref, Vinp6 and Vinn7
+    D_LMP_WriteRegister(CH3_CONFIG, 0x70); // Channel 3 configuration: 214.655SPS, FGA off, buffer in signal path
+    D_LMP_WriteRegister(CH4_INPUTCN, 0x01); // Disable sensor diagnostics, default ref, vinp2 and vinn3
+    D_LMP_WriteRegister(CH4_CONFIG, 0x70); // Channel 4 configuration: 214.655SPS, FGA off, buffer in signal path
+    D_LMP_WriteRegister(CH5_INPUTCN, 0x13); // Disable sensor diagnostics, default ref, vinp4 and vinn5
+    D_LMP_WriteRegister(CH5_CONFIG, 0x70); // Channel 5 configuration: 214.655SPS, FGA off, buffer in signal path
+    D_LMP_WriteRegister(CH6_INPUTCN, 0x25); // Disable sensor diagnostics, default ref, vinp6 and vinn7
+    D_LMP_WriteRegister(CH6_CONFIG, 0x70); // Channel 6 configuration: 214.655SPS, FGA off, buffer in signal path
+    
 }
 
 /*******************************************************************************
@@ -64,6 +82,7 @@ void C_LMP_Init() {
     
     // Variables
     ledState = false;
+    AdcDataReadyFlag = false;
 }
 
 void C_LMP_ConfigureChannel(uint8_t which, 
@@ -123,7 +142,7 @@ uint16_t C_LMP_ReadAdc() {
     read_buffer[0] = D_LMP_ReadRegister(ADC_DOUTH);
     read_buffer[1] = D_LMP_ReadRegister(ADC_DOUTL);
     
-    return ((read_buffer[0]<<7) + read_buffer[1]);
+    return ((read_buffer[0]<<8) + read_buffer[1]);
 }
 
 void C_LMP_FlashLED(void) {
@@ -185,5 +204,34 @@ bool C_LMP_Test_NormalStreamRW() {
     
     if (errors == 0) return true;
     return false;
+}
+
+bool C_LMP_Test_NormalStreamReadADC(uint16_t *adc_sample_array, uint16_t samples) {
+    // Configure port pin to handle Data Ready Bar Output (DRDYB)
+    D_PORT_SetLmpInterruptPort();
+    D_INT_EnableDRDYBInterrupts(true);
+    
+    uint8_t i = 0, count = 2; // Data bytes to read for one conversion
+    
+    uint8_t read_buffer[count]; // Buffer with one sample
+    uint16_t adc_data; // Read data
+    bool ready = false;
+    
+    while(!ready) {
+        if (AdcDataReadyFlag) {
+            AdcDataReadyFlag = false;
+            // Read data into buffer
+            D_LMP_NormalStreamReadAdc(ADC_DOUTH, read_buffer, count);
+            // Convert data
+            adc_data = (((uint16_t)read_buffer[0] << 8) | (read_buffer[1]));
+            adc_sample_array[i] = adc_data;
+            
+            if (++i == samples) {
+                ready = true;
+            }
+        }
+    }
+    
+    return true;   
 }
 

@@ -143,6 +143,24 @@ void D_LMP_NormalStreamReadRegister(uint8_t addr, uint8_t *buffer, uint8_t count
     LMP_CSB = 1;
 }
 
+void D_LMP_NormalStreamReadAdc(uint8_t addr, uint8_t* buffer, uint8_t count) {
+    transaction_t t;
+    t.transaction1 = constructTransaction1(WRITE_ADDRESS, ConstructURA(addr));
+    t.transaction2 = constructTransaction2(*buffer, READ_DATA, SZ_STREAM, ConstructLRA(addr));
+    
+    LMP_CSB = 0;
+    D_SPI_WriteByte(t.transaction1.INST1);
+    D_SPI_WriteByte(t.transaction1.UAB);
+    
+    D_SPI_WriteByte(inst2ToByte(t.transaction2.INST2));
+    
+    uint8_t i;
+    for (i=0; i<count; i++) {
+        *(buffer + i) = D_SPI_WriteByte(0x00);
+    }
+    LMP_CSB = 1;
+}
+
 void D_LMP_ControlledStreamReadAdc(uint8_t addr, uint8_t* buffer, uint8_t count) {
     uint8_t i;
     static uint8_t repeat_controlled = 0;

@@ -75,6 +75,11 @@ extern "C" {
 #define BG_CAL_MODE_2 0x02 /* Offset Correction / Gain Correction */
 #define BG_CAL_MODE_3 0x03 /* Offset Estimation / Gain Estimation */    
     
+// Channel scan not ready mask
+    
+    // Variables
+    extern bool AdcDataReadyFlag;
+    
     
     /**
      * 
@@ -136,7 +141,17 @@ extern "C" {
      * 
      * @return 
      */
-    bool C_LMP_Test_NormalStreamRW();
+    bool C_LMP_Test_NormalStreamRW(void);
+    
+    /**
+     * NORMAL STREAM READ ADC DATA 
+     * 
+     * Stream read 1 channel of the ADC. The input is read on an interrupt on
+     * DR pin of LMP. Returns "true" when the interrupt is fired an a value 
+     * different from 0 is read.
+     * @return 
+     */
+    bool C_LMP_Test_NormalStreamReadADC(uint16_t *buffer, uint16_t count);
 
 
 #ifdef	__cplusplus

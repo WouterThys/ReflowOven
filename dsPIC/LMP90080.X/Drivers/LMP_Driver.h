@@ -44,6 +44,8 @@ extern "C" {
 #define DATA_FIRST_DISABLE  0xFB
 #define DATA_FIRST_STATUS   0x9F
     
+#define CH_SCAN_NRDY        0x02    /* Channel Scan Not Ready Bit */
+    
 
     
     // Typedefs

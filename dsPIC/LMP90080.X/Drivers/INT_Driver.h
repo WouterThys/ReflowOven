@@ -16,8 +16,7 @@ extern "C" {
  * Interrupt priorities
  */
 
-#define INT2_IP     6
-#define INT1_IP     3
+#define INT1_IP     6
 #define U1RX_IP     5
 #define TMR2_IP     4   
 #define TMR4_IP     1
@@ -32,10 +31,16 @@ void D_INT_Init(void);
 void D_INT_EnableInterrupts(bool enable);
 
 /**
- * 
+ * Enables interrupts on UART input.
  * @param enable
  */
 void D_INT_EnableUartInterrupts(bool enable);
+
+/**
+ * Enables interrupts on falling edge of DRDYB pin of LMP.
+ * @param enable
+ */
+void D_INT_EnableDRDYBInterrupts(bool enable);
 
 #ifdef	__cplusplus
 }
