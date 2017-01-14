@@ -112,6 +112,21 @@ extern "C" {
      * 
      */
     void C_LMP_FlashLED(void);
+    
+    
+    /**
+     * WRITE AND READ FROM LMP TEST
+     * 
+     * Writes a value to one of the registers of the LMP, and reads it back. If
+     * these values are the same, "true" will be returned. 
+     * The "value" is written to the "addr" using the functions 
+     * D_LMP_WriteRegister and D_LMP_ReadRegister from the LMP_Driver.h
+     * 
+     * @param addr
+     * @param value
+     * @return true if success
+     */
+    bool C_LMP_TestWrite(uint8_t addr, uint8_t value);
 
 
 #ifdef	__cplusplus

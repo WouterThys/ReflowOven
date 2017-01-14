@@ -16,6 +16,7 @@
 #include <stdint.h>        /* Includes uint16_t definition                    */
 #include <stdbool.h>       /* Includes true/false definition                  */
 
+#include "Drivers/LMP90080.h"
 #include "Drivers/UART_Driver.h"
 #include "Drivers/SYSTEM_Driver.h"
 #include "Drivers/INT_Driver.h"
@@ -72,6 +73,8 @@ int main(void) {
     
     // Test
     printf("ini");
+    
+    if (C_LMP_TestWrite(SPI_DRDYBCN, 0x83)) LED1 = 1;
     
     while(1) {
         

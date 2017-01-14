@@ -31,23 +31,23 @@ static void configureLmp(void);
 
 void configureLmp() {
     
-    // Reset
-    D_LMP_WriteRegister(RESETCN, REG_AND_CNV_RST);
-    
-    // Disable data first mode
-    uint8_t buffer[1];
-    if (!D_LMP_DisableDataFirstMode(buffer, 0)) {
-        D_LMP_DisableDataFirstMode(buffer, 0);
-    } else {
-        inReadOnlyState = false;
-    }
-    
-    // SPI
-    D_LMP_WriteRegister(SPI_HANDSHAKECN, 0x80); // SDO_DRDYB_DRIVER = 0x4, SW_OFF_TRG = 0
-    D_LMP_WriteRegister(SPI_DRDYBCN, 0x83); // D6 = DRDYB signal, CRC_RST = 0, FGA_BGCAL = 0
-    
-    // Auxiliary control
-    D_LMP_WriteRegister(ADC_AUXCN, 0x20); // "External-Clock Detection" is bypassed, rest is default
+//    // Reset
+//    D_LMP_WriteRegister(RESETCN, REG_AND_CNV_RST);
+//    
+//    // Disable data first mode
+//    uint8_t buffer[1];
+//    if (!D_LMP_DisableDataFirstMode(buffer, 0)) {
+//        D_LMP_DisableDataFirstMode(buffer, 0);
+//    } else {
+//        inReadOnlyState = false;
+//    }
+//    
+//    // SPI
+//    D_LMP_WriteRegister(SPI_HANDSHAKECN, 0x80); // SDO_DRDYB_DRIVER = 0x4, SW_OFF_TRG = 0
+//    D_LMP_WriteRegister(SPI_DRDYBCN, 0x83); // D6 = DRDYB signal, CRC_RST = 0, FGA_BGCAL = 0
+//    
+//    // Auxiliary control
+//    D_LMP_WriteRegister(ADC_AUXCN, 0x20); // "External-Clock Detection" is bypassed, rest is default
 }
 
 /*******************************************************************************
@@ -134,5 +134,19 @@ void C_LMP_FlashLED(void) {
         ledState = true;
     }
     DelayMs(1000);
+}
+
+bool C_LMP_TestWrite(uint8_t addr, uint8_t value) {
+    uint8_t returned;
+    
+    D_LMP_WriteRegister(addr, value);
+    DelayMs(10);
+    returned = D_LMP_ReadRegister(addr);
+    
+    if (returned == value) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
