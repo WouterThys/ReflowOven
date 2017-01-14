@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Controllers/UART_Controller.c Controllers/Utils.c Controllers/LMP_Controller.c Drivers/SYSTEM_Driver.c Drivers/SPI_Driver.c Drivers/INT_Driver.c Drivers/UART_Driver.c Drivers/PORT_Driver.c Drivers/LMP_Driver.c configuration.c main.c
+SOURCEFILES_QUOTED_IF_SPACED=Controllers/Utils.c Controllers/LMP_Controller.c Drivers/SYSTEM_Driver.c Drivers/SPI_Driver.c Drivers/INT_Driver.c Drivers/UART_Driver.c Drivers/PORT_Driver.c Drivers/LMP_Driver.c configuration.c main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Controllers/UART_Controller.o ${OBJECTDIR}/Controllers/Utils.o ${OBJECTDIR}/Controllers/LMP_Controller.o ${OBJECTDIR}/Drivers/SYSTEM_Driver.o ${OBJECTDIR}/Drivers/SPI_Driver.o ${OBJECTDIR}/Drivers/INT_Driver.o ${OBJECTDIR}/Drivers/UART_Driver.o ${OBJECTDIR}/Drivers/PORT_Driver.o ${OBJECTDIR}/Drivers/LMP_Driver.o ${OBJECTDIR}/configuration.o ${OBJECTDIR}/main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/Controllers/UART_Controller.o.d ${OBJECTDIR}/Controllers/Utils.o.d ${OBJECTDIR}/Controllers/LMP_Controller.o.d ${OBJECTDIR}/Drivers/SYSTEM_Driver.o.d ${OBJECTDIR}/Drivers/SPI_Driver.o.d ${OBJECTDIR}/Drivers/INT_Driver.o.d ${OBJECTDIR}/Drivers/UART_Driver.o.d ${OBJECTDIR}/Drivers/PORT_Driver.o.d ${OBJECTDIR}/Drivers/LMP_Driver.o.d ${OBJECTDIR}/configuration.o.d ${OBJECTDIR}/main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Controllers/Utils.o ${OBJECTDIR}/Controllers/LMP_Controller.o ${OBJECTDIR}/Drivers/SYSTEM_Driver.o ${OBJECTDIR}/Drivers/SPI_Driver.o ${OBJECTDIR}/Drivers/INT_Driver.o ${OBJECTDIR}/Drivers/UART_Driver.o ${OBJECTDIR}/Drivers/PORT_Driver.o ${OBJECTDIR}/Drivers/LMP_Driver.o ${OBJECTDIR}/configuration.o ${OBJECTDIR}/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Controllers/Utils.o.d ${OBJECTDIR}/Controllers/LMP_Controller.o.d ${OBJECTDIR}/Drivers/SYSTEM_Driver.o.d ${OBJECTDIR}/Drivers/SPI_Driver.o.d ${OBJECTDIR}/Drivers/INT_Driver.o.d ${OBJECTDIR}/Drivers/UART_Driver.o.d ${OBJECTDIR}/Drivers/PORT_Driver.o.d ${OBJECTDIR}/Drivers/LMP_Driver.o.d ${OBJECTDIR}/configuration.o.d ${OBJECTDIR}/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Controllers/UART_Controller.o ${OBJECTDIR}/Controllers/Utils.o ${OBJECTDIR}/Controllers/LMP_Controller.o ${OBJECTDIR}/Drivers/SYSTEM_Driver.o ${OBJECTDIR}/Drivers/SPI_Driver.o ${OBJECTDIR}/Drivers/INT_Driver.o ${OBJECTDIR}/Drivers/UART_Driver.o ${OBJECTDIR}/Drivers/PORT_Driver.o ${OBJECTDIR}/Drivers/LMP_Driver.o ${OBJECTDIR}/configuration.o ${OBJECTDIR}/main.o
+OBJECTFILES=${OBJECTDIR}/Controllers/Utils.o ${OBJECTDIR}/Controllers/LMP_Controller.o ${OBJECTDIR}/Drivers/SYSTEM_Driver.o ${OBJECTDIR}/Drivers/SPI_Driver.o ${OBJECTDIR}/Drivers/INT_Driver.o ${OBJECTDIR}/Drivers/UART_Driver.o ${OBJECTDIR}/Drivers/PORT_Driver.o ${OBJECTDIR}/Drivers/LMP_Driver.o ${OBJECTDIR}/configuration.o ${OBJECTDIR}/main.o
 
 # Source Files
-SOURCEFILES=Controllers/UART_Controller.c Controllers/Utils.c Controllers/LMP_Controller.c Drivers/SYSTEM_Driver.c Drivers/SPI_Driver.c Drivers/INT_Driver.c Drivers/UART_Driver.c Drivers/PORT_Driver.c Drivers/LMP_Driver.c configuration.c main.c
+SOURCEFILES=Controllers/Utils.c Controllers/LMP_Controller.c Drivers/SYSTEM_Driver.c Drivers/SPI_Driver.c Drivers/INT_Driver.c Drivers/UART_Driver.c Drivers/PORT_Driver.c Drivers/LMP_Driver.c configuration.c main.c
 
 
 CFLAGS=
@@ -88,13 +88,6 @@ MP_LINKER_FILE_OPTION=,--script=p33EP32GP502.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/Controllers/UART_Controller.o: Controllers/UART_Controller.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/Controllers" 
-	@${RM} ${OBJECTDIR}/Controllers/UART_Controller.o.d 
-	@${RM} ${OBJECTDIR}/Controllers/UART_Controller.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Controllers/UART_Controller.c  -o ${OBJECTDIR}/Controllers/UART_Controller.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Controllers/UART_Controller.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/Controllers/UART_Controller.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/Controllers/Utils.o: Controllers/Utils.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Controllers" 
 	@${RM} ${OBJECTDIR}/Controllers/Utils.o.d 
@@ -166,13 +159,6 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
-${OBJECTDIR}/Controllers/UART_Controller.o: Controllers/UART_Controller.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/Controllers" 
-	@${RM} ${OBJECTDIR}/Controllers/UART_Controller.o.d 
-	@${RM} ${OBJECTDIR}/Controllers/UART_Controller.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Controllers/UART_Controller.c  -o ${OBJECTDIR}/Controllers/UART_Controller.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Controllers/UART_Controller.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/Controllers/UART_Controller.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/Controllers/Utils.o: Controllers/Utils.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Controllers" 
 	@${RM} ${OBJECTDIR}/Controllers/Utils.o.d 

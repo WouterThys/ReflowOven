@@ -20,8 +20,8 @@
 #include "Drivers/INT_Driver.h"
 #include "Drivers/PORT_Driver.h"
 
-#include "Controllers/UART_Controller.h"
 #include "Controllers/LMP_Controller.h"
+#include "Drivers/UART_Driver.h"
 
 /*******************************************************************************
  *          DEFINES
@@ -47,8 +47,10 @@ void initialize() {
     D_INT_Init();
     D_INT_EnableInterrupts(true);
     
+    D_UART_Init(UART_MODULE_1, 9600);
+    D_UART_Enable(UART_MODULE_1, true);
+    
     // Initialize Models
-    C_UART_Init("pic", 9600);
     C_LMP_Init();
     
     // Initialize controllers
@@ -68,7 +70,7 @@ int main(void) {
     initialize();
     
     // Test
-    C_UART_Write(COMMAND_Initialize, "Initialized");
+    printf("initialized");
     
     C_LMP_ConfigureChannel(CHANNEL_0, ODR_7, GAIN_1, BUFFER_DIS, 
             BURNOUT_DIS, VREF_SEL_1, VINP_0, VINN_1, BG_CAL_MODE_2);
@@ -77,14 +79,6 @@ int main(void) {
         
         DelayMs(1000);
         C_LMP_ReadAdc();
-        
-        if (C_UART_ReadFlag) {
-            C_UART_ReadFlag = false;
-            
-//            C_UART_HandleMessage(C_UART_ReadMessage());
-        }
-        
-//        C_LMP_FlashLED();
         
     }
     return 0;

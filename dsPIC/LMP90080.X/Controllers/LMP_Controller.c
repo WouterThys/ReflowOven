@@ -5,7 +5,6 @@
 #include <xc.h>
 
 #include "LMP_Controller.h"
-#include "UART_Controller.h"
 #include "../Drivers/LMP90080.h"
 #include "../Drivers/SYSTEM_Driver.h"
 #include "../Drivers/LMP_Driver.h"
@@ -122,10 +121,6 @@ uint16_t C_LMP_ReadAdc() {
     //D_LMP_NormalStreamReadRegister(ADC_DOUTH, read_buffer, 2);
     read_buffer[0] = D_LMP_ReadRegister(ADC_DOUTH);
     read_buffer[1] = D_LMP_ReadRegister(ADC_DOUTL);
-    
-    C_UART_WriteInt("A1", read_buffer[0]);
-    DelayMs(1);
-    C_UART_WriteInt("A2", read_buffer[1]);
     
     return ((read_buffer[0]<<7) + read_buffer[1]);
 }

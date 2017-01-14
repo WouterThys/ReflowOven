@@ -7,7 +7,6 @@
 #include "INT_Driver.h"
 
 #include "UART_Driver.h"
-#include "../Controllers/UART_Controller.h"
 
 /*******************************************************************************
  *          DEFINES
@@ -62,7 +61,7 @@ void D_INT_EnableUartInterrupts(bool enable) {
 void __attribute__ ( (interrupt, no_auto_psv) ) _U1RXInterrupt(void) {
     if (_U1RXIF) {
         //C_UART_FillDataBuffer(D_UART_ReadByte());
-        C_UART_AppendMessage(D_UART_ReadByte());
+        //C_UART_AppendMessage(D_UART_ReadByte());
         _U1RXIF = 0; // Clear interrupt
     }
 }
