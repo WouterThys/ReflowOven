@@ -13,6 +13,8 @@ extern "C" {
 // PIC
 #define LED1            PORTBbits.RB15
 #define LED1_Dir        TRISBbits.TRISB15
+#define LED2            PORTBbits.RB14
+#define LED2_Dir        TRISBbits.TRISB14
     
 // SPI    
 #define SPI1_SCK_Dir    TRISBbits.TRISB7

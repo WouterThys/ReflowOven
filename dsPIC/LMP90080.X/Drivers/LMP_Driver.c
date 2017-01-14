@@ -138,7 +138,7 @@ void D_LMP_NormalStreamReadRegister(uint8_t addr, uint8_t *buffer, uint8_t count
     
     uint8_t i;
     for (i=0; i<count; i++) {
-        *(buffer + i) = D_SPI_WriteByte(NULL);
+        *(buffer + i) = D_SPI_WriteByte(0x00);
     }
     LMP_CSB = 1;
 }

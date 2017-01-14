@@ -5,6 +5,7 @@
 #include <xc.h>
 
 #include "LMP_Controller.h"
+#include "../Drivers/PORT_Driver.h"
 #include "../Drivers/LMP90080.h"
 #include "../Drivers/SYSTEM_Driver.h"
 #include "../Drivers/LMP_Driver.h"
@@ -136,11 +137,11 @@ void C_LMP_FlashLED(void) {
     DelayMs(1000);
 }
 
-bool C_LMP_TestWrite(uint8_t addr, uint8_t value) {
+bool C_LMP_Test_SimpleRW(uint8_t addr, uint8_t value) {
     uint8_t returned;
     
     D_LMP_WriteRegister(addr, value);
-    DelayMs(10);
+    DelayUs(10);
     returned = D_LMP_ReadRegister(addr);
     
     if (returned == value) {
@@ -148,5 +149,41 @@ bool C_LMP_TestWrite(uint8_t addr, uint8_t value) {
     } else {
         return false;
     }
+}
+
+bool C_LMP_Test_NormalStreamRW() {
+    uint8_t write_buffer[9];
+    uint8_t read_buffer[9];
+    LED2 = 0;
+    
+    write_buffer[0] = 0x00; // Channel scan register value
+    write_buffer[1] = 0x01; // CH0 configuration
+    write_buffer[2] = 0x40; // CH0 input configuration
+    write_buffer[3] = 0x13; // CH1 configuration
+    write_buffer[4] = 0x40; // CH1 input configuration
+    write_buffer[5] = 0x25; // CH2 configuration
+    write_buffer[6] = 0x70; // CH2 input configuration
+    write_buffer[7] = 0x37; // CH3 configuration
+    write_buffer[8] = 0x70; // CH3 input configuration
+    
+    // Put device in normal stream mode
+    D_LMP_WriteRegister(SPI_STREAMCN, 0x00);
+    
+    // Stream write and read
+    D_LMP_NormalStreamWriteRegister(CH_SCAN, write_buffer, 9);
+    DelayUs(10);
+    D_LMP_NormalStreamReadRegister(CH_SCAN, read_buffer, 9);
+    
+    // Check
+    uint8_t i;
+    uint8_t errors = 0;
+    for (i=0; i<9; i++) {
+        if (write_buffer[i] != read_buffer[i]) {
+            errors++;
+        }
+    }
+    
+    if (errors == 0) return true;
+    return false;
 }
 

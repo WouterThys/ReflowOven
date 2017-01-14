@@ -44,7 +44,7 @@ void initSpi_1(uint16_t MS) {
     SPI1CON1bits.SSEN = 0; // SSx pin is not used by the module; pin is controlled by port function
     SPI1CON1bits.CKP = 1; // 
     //if(MS == SPI_MASTER) {
-        SPI1CON1bits.SPRE = 0b111; // Secondary pre-scale 1:1
+        SPI1CON1bits.SPRE = 0b110; // Secondary pre-scale 1:1
         SPI1CON1bits.PPRE = 0b00; // Primary pre-scale 64:1
     //}
     

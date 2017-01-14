@@ -54,6 +54,7 @@ void initialize() {
     
     // Initialize Models
     C_LMP_Init();
+    LED1 = 0;
     
     // Initialize controllers
     
@@ -72,9 +73,10 @@ int main(void) {
     initialize();
     
     // Test
-    printf("ini");
+    printf("ini \n");
     
-    if (C_LMP_TestWrite(SPI_DRDYBCN, 0x83)) LED1 = 1;
+    //if (C_LMP_Test_SimpleRW(SPI_DRDYBCN, 0x83)) LED1 = 1;
+    if(C_LMP_Test_NormalStreamRW()) LED1 = 1;
     
     while(1) {
         

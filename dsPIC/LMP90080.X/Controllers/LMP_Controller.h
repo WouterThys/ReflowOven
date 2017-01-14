@@ -126,7 +126,17 @@ extern "C" {
      * @param value
      * @return true if success
      */
-    bool C_LMP_TestWrite(uint8_t addr, uint8_t value);
+    bool C_LMP_Test_SimpleRW(uint8_t addr, uint8_t value);
+    
+    /**
+     * WRITE AND READ FOR NORMAL STREAM
+     * 
+     * Writes and reads a buffer to the LMP, if the read values are the same
+     * as the written values, "true" is returned.
+     * 
+     * @return 
+     */
+    bool C_LMP_Test_NormalStreamRW();
 
 
 #ifdef	__cplusplus
