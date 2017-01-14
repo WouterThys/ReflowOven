@@ -129,35 +129,35 @@ void TI_LMP90100_WriteRegSettings(uint8_t *pURA)
 {
  
   TI_LMP90100_SPIWriteReg(TI_LMP90100_RESETCN_REG, 
-                          TI_LMP90100_RESETCN_REG_VALUE, pURA);                // register and conversion reset
+                          TI_LMP90100_RESETCN_REG_VALUE, pURA);                // register and conversion reset 0xC3
   TI_LMP90100_SPIWriteReg(TI_LMP90100_SPI_HANDSHAKECN_REG, 
-                          TI_LMP90100_SPI_HANDSHAKECN_REG_VALUE, pURA);        // SDO high z delayed 
+                          TI_LMP90100_SPI_HANDSHAKECN_REG_VALUE, pURA);        // SDO high z delayed 0x01
   TI_LMP90100_SPIWriteReg(TI_LMP90100_SPI_STREAMCN_REG, 
-                          TI_LMP90100_SPI_STREAMCN_REG_VALUE, pURA);           // normal streaming
+                          TI_LMP90100_SPI_STREAMCN_REG_VALUE, pURA);           // normal streaming 0x00
   TI_LMP90100_SPIWriteReg(TI_LMP90100_PWRCN_REG, 
-                          TI_LMP90100_PWRCN_REG_VALUE, pURA);                  // active mode
+                          TI_LMP90100_PWRCN_REG_VALUE, pURA);                  // active mode 0x00
   TI_LMP90100_SPIWriteReg(TI_LMP90100_ADC_RESTART_REG, 
-                          TI_LMP90100_ADC_RESTART_REG_VALUE, pURA);            // disable restart conversion
+                          TI_LMP90100_ADC_RESTART_REG_VALUE, pURA);            // disable restart conversion 0x00
   TI_LMP90100_SPIWriteReg(TI_LMP90100_GPIO_DIRCN_REG, 
-                          TI_LMP90100_GPIO_DIRCN_REG_VALUE, pURA);             // D6 is an output, D1-D5 are inputs
+                          TI_LMP90100_GPIO_DIRCN_REG_VALUE, pURA);             // D6 is an output, D1-D5 are inputs 0x40
   TI_LMP90100_SPIWriteReg(TI_LMP90100_GPIO_DAT_REG, 
-                          TI_LMP90100_GPIO_DAT_REG_VALUE, pURA);               // Set D6 high
+                          TI_LMP90100_GPIO_DAT_REG_VALUE, pURA);               // Set D6 high 0x40
   TI_LMP90100_SPIWriteReg(TI_LMP90100_BGCALCN_REG, 
-                          TI_LMP90100_BGCALCN_REG_VALUE, pURA);                // Background calibration off 
+                          TI_LMP90100_BGCALCN_REG_VALUE, pURA);                // Background calibration off  0x00
   TI_LMP90100_SPIWriteReg(TI_LMP90100_SPI_DRDYBCN_REG, 
-                          TI_LMP90100_SPI_DRDYBCN_REG_VALUE, pURA);            // enable DRDYB on D6 
+                          TI_LMP90100_SPI_DRDYBCN_REG_VALUE, pURA);            // enable DRDYB on D6 0x83
   TI_LMP90100_SPIWriteReg(TI_LMP90100_ADC_AUXCN_REG, 
-                          TI_LMP90100_ADC_AUXCN_REG_VALUE, pURA);              // disable external clock detection, internal clock
+                          TI_LMP90100_ADC_AUXCN_REG_VALUE, pURA);              // disable external clock detection, internal clock 0x20
   TI_LMP90100_SPIWriteReg(TI_LMP90100_SPI_CRC_CN_REG, 
-                          TI_LMP90100_SPI_CRC_CN_REG_VALUE, pURA);             // Disable CRC
+                          TI_LMP90100_SPI_CRC_CN_REG_VALUE, pURA);             // Disable CRC 0x00
   TI_LMP90100_SPIWriteReg(TI_LMP90100_SENDIAG_THLDH_REG, 
-                          TI_LMP90100_SENDIAG_THLDH_REG_VALUE, pURA);          // Sensor Diagnostic Threshold High
+                          TI_LMP90100_SENDIAG_THLDH_REG_VALUE, pURA);          // Sensor Diagnostic Threshold High 0x00
   TI_LMP90100_SPIWriteReg(TI_LMP90100_SENDIAG_THLDL_REG, 
-                          TI_LMP90100_SENDIAG_THLDL_REG_VALUE, pURA);          // Sensor Diagnostic Threshold Low
+                          TI_LMP90100_SENDIAG_THLDL_REG_VALUE, pURA);          // Sensor Diagnostic Threshold Low 0x00
   TI_LMP90100_SPIWriteReg(TI_LMP90100_SCALCN_REG, 
-                          TI_LMP90100_SCALCN_REG_VALUE, pURA);                 // Normal mode
+                          TI_LMP90100_SCALCN_REG_VALUE, pURA);                 // Normal mode 0x00
   TI_LMP90100_SPIWriteReg(TI_LMP90100_ADC_DONE_REG, 
-                          TI_LMP90100_ADC_DONE_REG_VALUE, pURA);               // ADC Data unavailable
+                          TI_LMP90100_ADC_DONE_REG_VALUE, pURA);               // ADC Data unavailable 0xFF
   // Set up scan register for conversion
   while (TI_LMP90100_SPIReadReg((TI_LMP90100_CH_STS_REG 
                                  & TI_LMP90100_CH_SCAN_NRDY), pURA));          // wait if CH_SCAN_NRDY

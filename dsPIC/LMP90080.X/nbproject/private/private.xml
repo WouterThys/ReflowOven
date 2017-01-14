@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/waldo/Documents/Geeken/Projects/OVEN/dsPIC/LMP90080.X/main.c</file>
-            <file>file:/home/waldo/Documents/Geeken/Projects/OVEN/dsPIC/LMP90080.X/Controllers/UART_Controller.c</file>
-            <file>file:/home/waldo/Documents/Geeken/Projects/OVEN/dsPIC/LMP90080.X/Controllers/UART_Controller.h</file>
+            <file>file:/home/waldo/Documents/Geeken/Projects/OVEN/dsPIC/LMP90080.X/Controllers/LMP_Controller.h</file>
             <file>file:/home/waldo/Documents/Geeken/Projects/OVEN/dsPIC/LMP90080.X/Controllers/LMP_Controller.c</file>
+            <file>file:/home/waldo/Documents/Geeken/Projects/OVEN/dsPIC/LMP90080.X/Drivers/LMP_Driver.h</file>
         </group>
     </open-files>
 </project-private>

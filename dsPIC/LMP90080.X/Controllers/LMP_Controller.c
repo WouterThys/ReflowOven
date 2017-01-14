@@ -32,6 +32,9 @@ static void configureLmp(void);
 
 void configureLmp() {
     
+    // Reset
+    D_LMP_WriteRegister(RESETCN, REG_AND_CNV_RST);
+    
     // Disable data first mode
     uint8_t buffer[1];
     if (!D_LMP_DisableDataFirstMode(buffer, 0)) {
