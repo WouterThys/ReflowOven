@@ -141,14 +141,14 @@ Program Memory  [Origin = 0x200, Length = 0x55ec]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x9b2           0xe8b  (3723)
-.const                       0xbb2                 0xc            0x12  (18)
-.text                        0xbbe               0x802           0xc03  (3075)
-.dinit                      0x13c0                0xaa            0xff  (255)
-.text                       0x146a               0x244           0x366  (870)
-.init.delay32               0x16ae                0x1c            0x2a  (42)
-.text                       0x16ca                0x1a            0x27  (39)
+.const                       0xbb2                 0x4             0x6  (6)
+.text                        0xbb6               0x7f6           0xbf1  (3057)
+.dinit                      0x13ac                0xaa            0xff  (255)
+.text                       0x1456               0x224           0x336  (822)
+.init.delay32               0x167a                0x1c            0x2a  (42)
+.text                       0x1696                0x1a            0x27  (39)
 
-                 Total program memory used (bytes):         0x1f56  (8022) 24%
+                 Total program memory used (bytes):         0x1f08  (7944) 24%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0x1fc]
@@ -237,74 +237,74 @@ External Symbols in Program Memory (by address):
                   0x000ba6                  ___mulp32eds3
                   0x000ba6                  ___mulp32peds3
                   0x000ba6                  ___mulsi3
-                  0x000c9c                  _D_LMP_Init
-                  0x000cac                  _D_LMP_ReadRegister
-                  0x000d1c                  _D_LMP_WriteRegister
-                  0x000d60                  _D_LMP_NormalStreamWriteRegister
-                  0x000dee                  _D_LMP_NormalStreamReadRegister
-                  0x000e7e                  _D_LMP_ControlledStreamReadAdc
-                  0x000f20                  _D_LMP_DataOnlyReadAdc
-                  0x000f4e                  _D_LMP_CRC8MakeBitwise2
-                  0x000fb4                  _D_LMP_CRCCheck
-                  0x000fe2                  _D_LMP_EnableDataFirstMode
-                  0x00103e                  _D_LMP_DisableDataFirstMode
-                  0x0010d8                  _C_LMP_Init
-                  0x0010e4                  _C_LMP_ConfigureChannel
-                  0x001254                  _C_LMP_ReadAdc
-                  0x001272                  _C_LMP_FlashLED
-                  0x0012fe                  _D_UART_Init
-                  0x001326                  _D_UART_Enable
-                  0x001358                  _D_UART_WriteByte
-                  0x001370                  _D_UART_ReadByte
-                  0x0013a8                  _putch
-                  0x0014ba                  _D_PORT_SetSpiPorts
-                  0x0014de                  _D_PORT_SetUartPorts
-                  0x001538                  _D_SPI_Init
-                  0x001562                  _D_SPI_WriteByte
-                  0x00157c                  _D_SYS_InitOscillator
-                  0x0015ae                  _D_SYS_InitPll
-                  0x0015de                  _D_SYS_InitPorts
-                  0x0015f0                  _D_INT_Init
-                  0x0015fe                  _D_INT_EnableInterrupts
-                  0x001624                  _D_INT_EnableUartInterrupts
-                  0x001646                  __U1RXInterrupt
-                  0x001680                  _main
-                  0x0016ae                  ___delay32
-                  0x0016ca                  _StringEquals
+                  0x000c94                  _D_LMP_Init
+                  0x000ca4                  _D_LMP_ReadRegister
+                  0x000d14                  _D_LMP_WriteRegister
+                  0x000d58                  _D_LMP_NormalStreamWriteRegister
+                  0x000de6                  _D_LMP_NormalStreamReadRegister
+                  0x000e76                  _D_LMP_ControlledStreamReadAdc
+                  0x000f18                  _D_LMP_DataOnlyReadAdc
+                  0x000f46                  _D_LMP_CRC8MakeBitwise2
+                  0x000fac                  _D_LMP_CRCCheck
+                  0x000fda                  _D_LMP_EnableDataFirstMode
+                  0x001036                  _D_LMP_DisableDataFirstMode
+                  0x0010d0                  _C_LMP_Init
+                  0x0010dc                  _C_LMP_ConfigureChannel
+                  0x00124c                  _C_LMP_ReadAdc
+                  0x00126a                  _C_LMP_FlashLED
+                  0x0012f6                  _D_UART_Init
+                  0x00131e                  _D_UART_Enable
+                  0x001350                  _D_UART_WriteByte
+                  0x001368                  _D_UART_ReadByte
+                  0x0013a0                  _putch
+                  0x0014a6                  _D_PORT_SetSpiPorts
+                  0x0014ca                  _D_PORT_SetUartPorts
+                  0x001524                  _D_SPI_Init
+                  0x00154e                  _D_SPI_WriteByte
+                  0x001568                  _D_SYS_InitOscillator
+                  0x00159a                  _D_SYS_InitPll
+                  0x0015ca                  _D_SYS_InitPorts
+                  0x0015dc                  _D_INT_Init
+                  0x0015ea                  _D_INT_EnableInterrupts
+                  0x001610                  _D_INT_EnableUartInterrupts
+                  0x001632                  __U1RXInterrupt
+                  0x00166c                  _main
+                  0x00167a                  ___delay32
+                  0x001696                  _StringEquals
                   0x0057fa                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x0010e4                  _C_LMP_ConfigureChannel
-                  0x001272                  _C_LMP_FlashLED
-                  0x0010d8                  _C_LMP_Init
-                  0x001254                  _C_LMP_ReadAdc
-                  0x0015fe                  _D_INT_EnableInterrupts
-                  0x001624                  _D_INT_EnableUartInterrupts
-                  0x0015f0                  _D_INT_Init
-                  0x000f4e                  _D_LMP_CRC8MakeBitwise2
-                  0x000fb4                  _D_LMP_CRCCheck
-                  0x000e7e                  _D_LMP_ControlledStreamReadAdc
-                  0x000f20                  _D_LMP_DataOnlyReadAdc
-                  0x00103e                  _D_LMP_DisableDataFirstMode
-                  0x000fe2                  _D_LMP_EnableDataFirstMode
-                  0x000c9c                  _D_LMP_Init
-                  0x000dee                  _D_LMP_NormalStreamReadRegister
-                  0x000d60                  _D_LMP_NormalStreamWriteRegister
-                  0x000cac                  _D_LMP_ReadRegister
-                  0x000d1c                  _D_LMP_WriteRegister
-                  0x0014ba                  _D_PORT_SetSpiPorts
-                  0x0014de                  _D_PORT_SetUartPorts
-                  0x001538                  _D_SPI_Init
-                  0x001562                  _D_SPI_WriteByte
-                  0x00157c                  _D_SYS_InitOscillator
-                  0x0015ae                  _D_SYS_InitPll
-                  0x0015de                  _D_SYS_InitPorts
-                  0x001326                  _D_UART_Enable
-                  0x0012fe                  _D_UART_Init
-                  0x001370                  _D_UART_ReadByte
-                  0x001358                  _D_UART_WriteByte
-                  0x0016ca                  _StringEquals
+                  0x0010dc                  _C_LMP_ConfigureChannel
+                  0x00126a                  _C_LMP_FlashLED
+                  0x0010d0                  _C_LMP_Init
+                  0x00124c                  _C_LMP_ReadAdc
+                  0x0015ea                  _D_INT_EnableInterrupts
+                  0x001610                  _D_INT_EnableUartInterrupts
+                  0x0015dc                  _D_INT_Init
+                  0x000f46                  _D_LMP_CRC8MakeBitwise2
+                  0x000fac                  _D_LMP_CRCCheck
+                  0x000e76                  _D_LMP_ControlledStreamReadAdc
+                  0x000f18                  _D_LMP_DataOnlyReadAdc
+                  0x001036                  _D_LMP_DisableDataFirstMode
+                  0x000fda                  _D_LMP_EnableDataFirstMode
+                  0x000c94                  _D_LMP_Init
+                  0x000de6                  _D_LMP_NormalStreamReadRegister
+                  0x000d58                  _D_LMP_NormalStreamWriteRegister
+                  0x000ca4                  _D_LMP_ReadRegister
+                  0x000d14                  _D_LMP_WriteRegister
+                  0x0014a6                  _D_PORT_SetSpiPorts
+                  0x0014ca                  _D_PORT_SetUartPorts
+                  0x001524                  _D_SPI_Init
+                  0x00154e                  _D_SPI_WriteByte
+                  0x001568                  _D_SYS_InitOscillator
+                  0x00159a                  _D_SYS_InitPll
+                  0x0015ca                  _D_SYS_InitPorts
+                  0x00131e                  _D_UART_Enable
+                  0x0012f6                  _D_UART_Init
+                  0x001368                  _D_UART_ReadByte
+                  0x001350                  _D_UART_WriteByte
+                  0x001696                  _StringEquals
                   0x000a4e                  __Atexit
                   0x000914                  __Closreg
                   0x0009d8                  __DNKfflush
@@ -313,11 +313,11 @@ External Symbols in Program Memory (by name):
                   0x000706                  __Fwprep
                   0x000b86                  __Getmem
                   0x000794                  __Puttxt
-                  0x001646                  __U1RXInterrupt
+                  0x001632                  __U1RXInterrupt
                   0x00090c                  __Vacopy
                   0x000456                  ___Printf_s
                   0x0005ba                  ___Putfld_s
-                  0x0016ae                  ___delay32
+                  0x00167a                  ___delay32
                   0x0003cc                  ___divsi3
                   0x000ba6                  ___mulp32eds3
                   0x000ba6                  ___mulp32peds3
@@ -332,11 +332,11 @@ External Symbols in Program Memory (by name):
                   0x000926                  _fclose
                   0x000a68                  _free
                   0x000618                  _fwrite
-                  0x001680                  _main
+                  0x00166c                  _main
                   0x000b32                  _malloc
                   0x0006c0                  _memchr
                   0x0006d4                  _memcpy
-                  0x0013a8                  _putch
+                  0x0013a0                  _putch
                   0x0006e2                  _strchr
                   0x00040a                  _strcmp
                   0x0006fa                  _strlen
@@ -565,20 +565,20 @@ __FUID3
  .debug_abbrev    0x000787         0x1f build/default/production/configuration.o
  .debug_abbrev    0x0007a6         0x47 build/default/production/main.o
 
-.debug_line       0x000000        0x759
+.debug_line       0x000000        0x754
  *(.debug_line)
  .debug_line      0x000000         0x44 build/default/production/Controllers/Utils.o
  .debug_line      0x000044         0xd2 build/default/production/Controllers/LMP_Controller.o
  .debug_line      0x000116         0xb5 build/default/production/Drivers/SYSTEM_Driver.o
  .debug_line      0x0001cb         0xf5 build/default/production/Drivers/SPI_Driver.o
  .debug_line      0x0002c0         0xa6 build/default/production/Drivers/INT_Driver.o
- .debug_line      0x000366        0x114 build/default/production/Drivers/UART_Driver.o
- .debug_line      0x00047a         0xf5 build/default/production/Drivers/PORT_Driver.o
- .debug_line      0x00056f        0x189 build/default/production/Drivers/LMP_Driver.o
- .debug_line      0x0006f8         0x1a build/default/production/configuration.o
- .debug_line      0x000712         0x47 build/default/production/main.o
+ .debug_line      0x000366        0x113 build/default/production/Drivers/UART_Driver.o
+ .debug_line      0x000479         0xf5 build/default/production/Drivers/PORT_Driver.o
+ .debug_line      0x00056e        0x189 build/default/production/Drivers/LMP_Driver.o
+ .debug_line      0x0006f7         0x1a build/default/production/configuration.o
+ .debug_line      0x000711         0x43 build/default/production/main.o
 
-.debug_frame      0x000000        0x628
+.debug_frame      0x000000        0x620
  *(.debug_frame)
  .debug_frame     0x000000         0x30 build/default/production/Controllers/Utils.o
  .debug_frame     0x000030         0xa0 build/default/production/Controllers/LMP_Controller.o
@@ -588,7 +588,7 @@ __FUID3
  .debug_frame     0x000248         0xd8 build/default/production/Drivers/UART_Driver.o
  .debug_frame     0x000320         0xbc build/default/production/Drivers/PORT_Driver.o
  .debug_frame     0x0003dc        0x1f2 build/default/production/Drivers/LMP_Driver.o
- .debug_frame     0x0005ce         0x5a build/default/production/main.o
+ .debug_frame     0x0005ce         0x52 build/default/production/main.o
 
 .debug_str        0x000000        0x149
  *(.debug_str)
@@ -1916,60 +1916,60 @@ __c30_signature
  .config_JTAGEN
                   0x0057f0          0x2 build/default/production/configuration.o
 
-.const              0x8bb2          0xc load address 0x000bb2  
- .const             0x8bb2          0xc build/default/production/main.o
+.const              0x8bb2          0x4 load address 0x000bb2  
+ .const             0x8bb2          0x4 build/default/production/main.o
 
-.text             0x000bbe        0x802
- .text            0x000bbe        0x4e8 build/default/production/Drivers/LMP_Driver.o
-                  0x000c9c                  _D_LMP_Init
-                  0x000cac                  _D_LMP_ReadRegister
-                  0x000d1c                  _D_LMP_WriteRegister
-                  0x000d60                  _D_LMP_NormalStreamWriteRegister
-                  0x000dee                  _D_LMP_NormalStreamReadRegister
-                  0x000e7e                  _D_LMP_ControlledStreamReadAdc
-                  0x000f20                  _D_LMP_DataOnlyReadAdc
-                  0x000f4e                  _D_LMP_CRC8MakeBitwise2
-                  0x000fb4                  _D_LMP_CRCCheck
-                  0x000fe2                  _D_LMP_EnableDataFirstMode
-                  0x00103e                  _D_LMP_DisableDataFirstMode
- .text            0x0010a6        0x1f2 build/default/production/Controllers/LMP_Controller.o
-                  0x0010d8                  _C_LMP_Init
-                  0x0010e4                  _C_LMP_ConfigureChannel
-                  0x001254                  _C_LMP_ReadAdc
-                  0x001272                  _C_LMP_FlashLED
- .text            0x001298        0x128 build/default/production/Drivers/UART_Driver.o
-                  0x0012fe                  _D_UART_Init
-                  0x001326                  _D_UART_Enable
-                  0x001358                  _D_UART_WriteByte
-                  0x001370                  _D_UART_ReadByte
-                  0x0013a8                  _putch
+.text             0x000bb6        0x7f6
+ .text            0x000bb6        0x4e8 build/default/production/Drivers/LMP_Driver.o
+                  0x000c94                  _D_LMP_Init
+                  0x000ca4                  _D_LMP_ReadRegister
+                  0x000d14                  _D_LMP_WriteRegister
+                  0x000d58                  _D_LMP_NormalStreamWriteRegister
+                  0x000de6                  _D_LMP_NormalStreamReadRegister
+                  0x000e76                  _D_LMP_ControlledStreamReadAdc
+                  0x000f18                  _D_LMP_DataOnlyReadAdc
+                  0x000f46                  _D_LMP_CRC8MakeBitwise2
+                  0x000fac                  _D_LMP_CRCCheck
+                  0x000fda                  _D_LMP_EnableDataFirstMode
+                  0x001036                  _D_LMP_DisableDataFirstMode
+ .text            0x00109e        0x1f2 build/default/production/Controllers/LMP_Controller.o
+                  0x0010d0                  _C_LMP_Init
+                  0x0010dc                  _C_LMP_ConfigureChannel
+                  0x00124c                  _C_LMP_ReadAdc
+                  0x00126a                  _C_LMP_FlashLED
+ .text            0x001290        0x11c build/default/production/Drivers/UART_Driver.o
+                  0x0012f6                  _D_UART_Init
+                  0x00131e                  _D_UART_Enable
+                  0x001350                  _D_UART_WriteByte
+                  0x001368                  _D_UART_ReadByte
+                  0x0013a0                  _putch
 
-.dinit            0x0013c0         0xaa
- .dinit           0x0013c0         0xaa data_init
+.dinit            0x0013ac         0xaa
+ .dinit           0x0013ac         0xaa data_init
 
-.text             0x00146a        0x244
- .text            0x00146a         0x92 build/default/production/Drivers/PORT_Driver.o
-                  0x0014ba                  _D_PORT_SetSpiPorts
-                  0x0014de                  _D_PORT_SetUartPorts
- .text            0x0014fc         0x80 build/default/production/Drivers/SPI_Driver.o
-                  0x001538                  _D_SPI_Init
-                  0x001562                  _D_SPI_WriteByte
- .text            0x00157c         0x74 build/default/production/Drivers/SYSTEM_Driver.o
-                  0x00157c                  _D_SYS_InitOscillator
-                  0x0015ae                  _D_SYS_InitPll
-                  0x0015de                  _D_SYS_InitPorts
- .text            0x0015f0         0x6c build/default/production/Drivers/INT_Driver.o
-                  0x0015f0                  _D_INT_Init
-                  0x0015fe                  _D_INT_EnableInterrupts
-                  0x001624                  _D_INT_EnableUartInterrupts
-                  0x001646                  __U1RXInterrupt
- .text            0x00165c         0x52 build/default/production/main.o
-                  0x001680                  _main
+.text             0x001456        0x224
+ .text            0x001456         0x92 build/default/production/Drivers/PORT_Driver.o
+                  0x0014a6                  _D_PORT_SetSpiPorts
+                  0x0014ca                  _D_PORT_SetUartPorts
+ .text            0x0014e8         0x80 build/default/production/Drivers/SPI_Driver.o
+                  0x001524                  _D_SPI_Init
+                  0x00154e                  _D_SPI_WriteByte
+ .text            0x001568         0x74 build/default/production/Drivers/SYSTEM_Driver.o
+                  0x001568                  _D_SYS_InitOscillator
+                  0x00159a                  _D_SYS_InitPll
+                  0x0015ca                  _D_SYS_InitPorts
+ .text            0x0015dc         0x6c build/default/production/Drivers/INT_Driver.o
+                  0x0015dc                  _D_INT_Init
+                  0x0015ea                  _D_INT_EnableInterrupts
+                  0x001610                  _D_INT_EnableUartInterrupts
+                  0x001632                  __U1RXInterrupt
+ .text            0x001648         0x32 build/default/production/main.o
+                  0x00166c                  _main
 
-.init.delay32     0x0016ae         0x1c
- .init.delay32    0x0016ae         0x1c /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32ep.Leo)
-                  0x0016ae                  ___delay32
+.init.delay32     0x00167a         0x1c
+ .init.delay32    0x00167a         0x1c /opt/microchip/xc16/v1.30/bin/bin/../../lib/liblega-pic30-elf.a(delay32ep.Leo)
+                  0x00167a                  ___delay32
 
-.text             0x0016ca         0x1a
- .text            0x0016ca         0x1a build/default/production/Controllers/Utils.o
-                  0x0016ca                  _StringEquals
+.text             0x001696         0x1a
+ .text            0x001696         0x1a build/default/production/Controllers/Utils.o
+                  0x001696                  _StringEquals

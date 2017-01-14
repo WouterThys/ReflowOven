@@ -116,7 +116,6 @@ uint8_t D_UART_ReadByte() {
     return U1RXREG;
 }
 
-void putch(uint8_t data) {
-    U1TXREG = data;
-    while(U1STAbits.TRMT == 0);
+void putch(char data) {
+    D_UART_WriteByte(data);
 }
