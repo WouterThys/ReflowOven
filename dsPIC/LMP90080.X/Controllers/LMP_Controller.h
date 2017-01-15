@@ -166,9 +166,22 @@ extern "C" {
      * Stream read 1 channel of the ADC. The input is read on an interrupt on
      * DR pin of LMP. Returns "true" when the interrupt is fired an a value 
      * different from 0 is read.
+     * @param buffer
+     * @param count
+     * @param crc
      * @return 
      */
     bool C_LMP_Test_NormalStreamReadADC(uint16_t *buffer, uint16_t count);
+    
+    /**
+     * Stream read 1 channel of the ADC. The input is read on an interrupt on
+     * DR pin of LMP. This functions returns true when the CRC check is passed, 
+     * false if not.
+     * @param buffer
+     * @param count
+     * @return 
+     */
+    bool C_LMP_Test_NormalStreamReadADCwithCRC(uint16_t *buffer, uint16_t count);
 
 
 #ifdef	__cplusplus

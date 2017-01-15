@@ -44,7 +44,7 @@ void configureLmp() {
     D_LMP_WriteRegister(BGCALCN, 0x02); // Background calibration mode 2
     D_LMP_WriteRegister(SPI_DRDYBCN, 0x83); // Enable DRDYB on D6, bits 0 & 1 must be 1, others default
     D_LMP_WriteRegister(ADC_AUXCN, 0x20); // Bypass external clock detection, internal clock, select 0 µA RTD current
-    D_LMP_WriteRegister(SPI_CRC_CN, 0x00); // Disable CRC, Bit 3 most be 0, DRDYB is de-asserted after ADC_DOUTL is read
+    D_LMP_WriteRegister(SPI_CRC_CN, 0x00); // Disable, bit 3 must be 0, DRDYB is de-asserted DOUTL is read
     D_LMP_WriteRegister(SENDIAG_THLD, 0x00); // Sensor diagnostics threshold low
     D_LMP_WriteRegister(SCALCN, 0x00); // System calibration normal mode
     D_LMP_WriteRegister(ADC_DONE, 0xFF); // ADC Data unavailable
@@ -239,7 +239,41 @@ bool C_LMP_Test_NormalStreamReadADC(uint16_t *adc_sample_array, uint16_t samples
             }
         }
     }
-    
     return true;   
+}
+
+bool C_LMP_Test_NormalStreamReadADCwithCRC(uint16_t *adc_sample_array, uint16_t samples) {
+    // Configure port pin to handle Data Ready Bar Output (DRDYB)
+    D_PORT_SetLmpInterruptPort();
+    D_INT_EnableDRDYBInterrupts(true);
+    
+    uint8_t i = 0, count = 3; // Data bytes to read for one conversion + CRC test
+    
+    uint8_t crc_test, read_buffer[count]; // CRC test value and buffer with one sample
+    uint16_t adc_data; // Read data
+    bool ready = false;
+    
+    while(!ready) {
+        if (adcDataReadyFlag) {
+            adcDataReadyFlag = false;
+            // Read data into buffer
+            D_LMP_NormalStreamReadAdc(ADC_DOUTH, read_buffer, count);
+            // Convert data
+            adc_data = (((uint16_t)read_buffer[0] << 8) | (read_buffer[1]));
+            crc_test = D_LMP_CRCCheck(read_buffer, count-1);
+            
+            if (crc_test == CRC_PASS) {
+                adc_sample_array[i] = adc_data;
+            } else {
+                adc_sample_array[i] = 0x0000;
+            }
+            
+            if (++i == samples) {
+                ready = true;
+            }
+        }
+    }
+    
+    return true;
 }
 
