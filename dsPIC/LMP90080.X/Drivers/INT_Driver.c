@@ -81,7 +81,7 @@ void __attribute__ ( (interrupt, no_auto_psv) ) _U1RXInterrupt(void) {
 void __attribute__ ( (interrupt, no_auto_psv) ) _INT1Interrupt(void) {
     if (_INT1IF) {
         
-        AdcDataReadyFlag = true;
+        adcDataReadyFlag = true;
         
         _INT1IF = 0; // Clear interrupt
     }

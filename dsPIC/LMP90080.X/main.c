@@ -84,6 +84,8 @@ int main(void) {
     
     uint16_t samples = 16;
     uint16_t buffer[samples];
+    SensorDiagnostics_t sd;
+    bool error = false;
     double av;
     
     //if (C_LMP_Test_SimpleRW(SPI_DRDYBCN, 0x83)) LED1 = 1;
@@ -99,6 +101,26 @@ int main(void) {
 
         printf("%f \n", av);
         
+        C_LMP_DiagnoseSensor(&sd);
+        
+        if (sd.overflow > 0) {
+            error = true;
+        }
+        if (sd.power_on_reset) {
+            error = true;
+        }
+        if (sd.rails) {
+            error = true;
+        }
+        if  (sd.short_circuit) {
+            error = true;
+        }
+        if (error) {
+            C_LMP_SetErrorLed(true);
+        } else {
+            C_LMP_SetErrorLed(false);
+        }
+        error = false;
         DelayMs(1000);
     }
     return 0;

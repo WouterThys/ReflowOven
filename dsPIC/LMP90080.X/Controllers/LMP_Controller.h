@@ -78,8 +78,20 @@ extern "C" {
 // Channel scan not ready mask
     
     // Variables
-    extern bool AdcDataReadyFlag;
+    extern bool adcDataReadyFlag;
     
+    typedef struct {
+        bool channel_scan_not_ready;
+        bool inalid_or_repeated_read;
+    } ChannelStatus_t;
+    
+    typedef struct {
+        bool short_circuit;
+        bool rails;
+        bool power_on_reset;
+        uint16_t overflow;
+        uint16_t channel;
+    } SensorDiagnostics_t;
     
     /**
      * 
@@ -116,7 +128,12 @@ extern "C" {
     /**
      * 
      */
-    void C_LMP_FlashLED(void);
+    void C_LMP_SetErrorLed(bool set);
+    
+    /**
+     * 
+     */
+    void C_LMP_DiagnoseSensor(SensorDiagnostics_t *sd);
     
     
     /**
