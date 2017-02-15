@@ -94,12 +94,13 @@ int main(void) {
     while(1) {
         if(C_LMP_Test_NormalStreamReadADC(buffer, samples)) LED1 = 1;
     
+        av = buffer[0];
         uint16_t i;
         for (i=0; i<samples; i++) {
             av = calculate_average(av, buffer[i], samples);
         }
 
-        printf("%f \n", av);
+        printf("%d \n", (int16_t)av);
         
         C_LMP_DiagnoseSensor(&sd);
         

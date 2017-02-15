@@ -43,7 +43,7 @@ void configureLmp() {
     D_LMP_WriteRegister(GPIO_DAT, 0x40); // Set D6 high, D0 low, ignore others
     D_LMP_WriteRegister(BGCALCN, 0x02); // Background calibration mode 2
     D_LMP_WriteRegister(SPI_DRDYBCN, 0x83); // Enable DRDYB on D6, bits 0 & 1 must be 1, others default
-    D_LMP_WriteRegister(ADC_AUXCN, 0x20); // Bypass external clock detection, internal clock, select 0 µA RTD current
+    D_LMP_WriteRegister(ADC_AUXCN, 0x28); // Bypass external clock detection, internal clock, select 1000 µA RTD current
     D_LMP_WriteRegister(SPI_CRC_CN, 0x00); // Disable, bit 3 must be 0, DRDYB is de-asserted DOUTL is read
     D_LMP_WriteRegister(SENDIAG_THLD, 0x00); // Sensor diagnostics threshold low
     D_LMP_WriteRegister(SCALCN, 0x00); // System calibration normal mode
@@ -53,7 +53,7 @@ void configureLmp() {
     
     D_LMP_WriteRegister(CH_SCAN, 0x00); // Single channel Continuous scan: channel 0
     D_LMP_WriteRegister(CH0_INPUTCN, 0x41); // Disable sensor diagnostics, VREFP2 & VREFN2, Vinp0 and Vinn1
-    D_LMP_WriteRegister(CH0_CONFIG, 0x41); // Channel 0 configuration: 26.83SPS, FGA off, buffer in signal path
+    D_LMP_WriteRegister(CH0_CONFIG, 0x47); // Channel 0 configuration: 26.83SPS, FGA x4, buffer in signal path
     D_LMP_WriteRegister(CH1_INPUTCN, 0x13); // Disable sensor diagnostics, default ref, Vinp2 and Vinn3
     D_LMP_WriteRegister(CH1_CONFIG, 0x40); // Channel 1 configuration: 26.83SPS, FGA off, no buffer in signal path
     D_LMP_WriteRegister(CH2_INPUTCN, 0x25); // Disable sensor diagnostics, default ref, Vinp4 and Vinn5
